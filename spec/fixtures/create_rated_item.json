@@ -1,0 +1,8 @@
+{
+    "Description": "the description",
+    "PeriodEnd": "2014-09-19T08:18:51.907Z",
+    "PeriodStart": "2014-09-19T08:18:51.907Z",
+    "PricePerUnit": 123.45,
+    "Quantity": 2,
+    "TaxPolicyId": "tax-policy-id"
+}

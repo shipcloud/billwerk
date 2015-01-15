@@ -1,0 +1,46 @@
+{
+  "Balance": 0,
+  "BilledUntil": "2014-05-23T13:12:47.0760000Z",
+  "Currency": "EUR",
+  "CurrentPhase": {
+      "PlanId": "53567a9e1d8dd00df056564d",
+      "PlanVariantId": "53567b431d8dd00df056564f",
+      "StartDate": "2014-04-23T13:12:47.0760000Z",
+      "Type": "Normal"
+  },
+  "CustomerId": "5357bc4f1d8dd00fa0db6c31",
+  "CustomerName": "Max Mustermann",
+  "EndDate": "2014-05-23T13:12:47.0760000Z",
+  "EscalationSuspended": false,
+  "Id": "5357bc4f1d8dd00fa0db6c32",
+  "LastBillingDate": "2014-04-23T13:12:47.0760000Z",
+  "LifecycleStatus": "Active",
+  "NextBillingDate": "2014-05-23T13:12:47.0760000Z",
+  "PaymentBearer": {
+      "CardType": "visa",
+      "Country": "DE",
+      "ExpiryMonth": 12,
+      "ExpiryYear": 2017,
+      "Holder": "Marcellus Wallace",
+      "Last4": "1111",
+      "Type": "CreditCard"
+  },
+  "PaymentProvider": "Paymill",
+  "Phases": [
+      {
+          "PlanId": "53567a9e1d8dd00df056564d",
+          "PlanVariantId": "53567b431d8dd00df056564f",
+          "StartDate": "2014-04-23T13:12:47.0760000Z",
+          "Type": "Normal"
+      },
+      {
+          "StartDate": "2014-05-23T13:12:47.0760000Z",
+          "Type": "Inactive"
+      }
+  ],
+  "PlanGroupId": "53567a731d8dd00df056564a",
+  "PlanId": "53567a9e1d8dd00df056564d",
+  "PlanVariantId": "53567b431d8dd00df056564f",
+  "RecurringPaymentsPaused": false,
+  "StartDate": "2014-04-23T13:12:47.0760000Z"
+}

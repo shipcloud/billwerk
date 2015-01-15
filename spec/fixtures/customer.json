@@ -1,0 +1,22 @@
+{
+    "Address": {
+      "City": "Example City",
+      "Country": "DE",
+      "HouseNumber": "42",
+      "PostalCode": "12345",
+      "Street": "Example Street"
+    },
+    "CompanyName": "Example Company",
+    "CreatedAt": "2014-05-12T14:22:24.0000000Z",
+    "CustomerName": "Example Company",
+    "CustomerType": "Consumer",
+    "DefaultBearerMedium": "Email",
+    "EmailAddress": "jane.doe@example.com",
+    "ExternalCustomerId": "",
+    "FirstName": "Jane",
+    "Id": "5370d9201d8dd006288221b0",
+    "Language": "de-DE",
+    "LastName": "Doe",
+    "Locale": "de-DE",
+    "VatId": "DE123456710"
+}
