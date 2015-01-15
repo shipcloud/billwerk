@@ -1,0 +1,22 @@
+{
+  "Id": "54b67d9e995ec90bc8f37718",
+  "InvoiceNumber": "SAN//2012//07--2435",
+  "CustomerId": "54b67d9e675ec90bc8f3770c",
+  "SentAt": "2012-07-03T23:02:22Z",
+  "DueDate": "2012-08-02",
+  "RecipientName": "OldTek GmbH",
+  "RecipientSubName": "Hermann Anton Müller",
+  "RecipientAddress": {
+    "AddressLine1": "c/o Andreas Meister",
+    "Street": "Sternstraße",
+    "HouseNumber": "43",
+    "PostalCode": "80538",
+    "City": "München",
+    "Country": "DE"
+  },
+  "Currency": "EUR",
+  "TotalNet": "211.60",
+  "TotalVat": "40.20",
+  "TotalGross": "251.80",
+  "IsInvoice": "False"
+}
