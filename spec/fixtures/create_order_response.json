@@ -1,0 +1,17 @@
+{
+  "Id": "537dfcab9e400760b4cd6347",
+  "AllowWithoutPaymentData": false,
+  "ComponentSubscriptions": [{
+    "PreventModification": false,
+    "VatPercentage": 0,
+    "TotalNet": 0,
+    "TotalVat": 0,
+    "ComponentId": "534bbdcc9e400722602f5a21",
+    "Quantity": 1
+  }],
+  "Total": -0.99,
+  "TotalVat": -0.19,
+  "IsTrial": false,
+  "CustomerId": "5370e5ab9e40071fd01e01df",
+  "ContractId": "5370e5ab9e40071fd01e01e0"
+}

@@ -1,0 +1,50 @@
+{
+  "Id": "5370e5ab9e40071fd01e01e0",
+  "LastBillingDate": "2014-05-22T13:33:30.9510000Z",
+  "NextBillingDate": "2014-06-22T13:33:30.9510000Z",
+  "PlanId": "525bf8eb9e40073a58590fd4",
+  "CustomerId": "5370e5ab9e40071fd01e01df",
+  "LifecycleStatus": "Active",
+  "CustomerName": "asd asd",
+  "Phases": [{
+    "Type": "Normal",
+    "StartDate": "2014-05-12T15:15:55.8410000Z",
+    "PlanVariantId": "5256be5c9e4007398ce610f0",
+    "PlanId": "5256be2a9e4007398ce610ef"
+  }, {
+    "Type": "Inactive",
+    "StartDate": "2014-05-13T22:00:00.0000000Z"
+    }, {
+    "Type": "Normal",
+    "StartDate": "2014-05-22T13:22:41.4510000Z",
+    "PlanVariantId": "5256be5c9e4007398ce610f0",
+    "PlanId": "5256be2a9e4007398ce610ef"
+  }, {
+    "Type": "Normal",
+    "StartDate": "2014-05-22T13:33:30.9510000Z",
+    "PlanVariantId": "525bf9089e40073a58590fd5",
+    "PlanId": "525bf8eb9e40073a58590fd4"
+  }],
+  "Balance": 0,
+  "Currency": "EUR",
+  "PlanGroupId": "5256be1b9e4007398ce610ee",
+  "PaymentBearer": {
+    "Code": "41212312",
+    "Holder": "asdasd asdad",
+    "Country": "de",
+    "Account": "*****3123",
+    "Type": "BankAccount"
+  },
+  "PaymentProvider": "Paymill",
+  "EscalationSuspended": false,
+  "RecurringPaymentsPaused": false,
+  "CurrentPhase": {
+    "Type": "Normal",
+    "StartDate": "2014-05-22T13:33:30.9510000Z",
+    "PlanVariantId": "525bf9089e40073a58590fd5",
+    "PlanId": "525bf8eb9e40073a58590fd4"
+  },
+  "StartDate": "2014-05-12T15:15:55.8410000Z",
+  "BilledUntil": "2014-06-22T13:33:30.9510000Z",
+  "PlanVariantId": "525bf9089e40073a58590fd5"
+}
