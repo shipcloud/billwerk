@@ -1,0 +1,73 @@
+{
+  "ContractAfter": {
+    "Balance": 0,
+    "Currency": "EUR",
+    "CurrentPhase": {
+      "PlanId": "53567a9e1d8dd00df056564d",
+      "StartDate": "2015-10-15T09:02:21.2750000Z",
+      "Type": "Trial"
+    },
+    "CustomFields": {},
+    "CustomerId": "561f6b9d1d8dd21334f22cb0",
+    "CustomerName": "Example Corp.",
+    "EndDate": "2015-12-15T10:02:21.2750000Z",
+    "EscalationSuspended": false,
+    "Id": "561f6b9d1d8dd21334f22cb2",
+    "LifecycleStatus": "InTrial",
+    "NextBillingDate": "2015-11-15T10:02:21.2750000Z",
+    "PaymentBearer": {
+      "CardType": "visa",
+      "Country": "DE",
+      "ExpiryMonth": 12,
+      "ExpiryYear": 2017,
+      "Holder": "Marcellus Wallace",
+      "Last4": "1111",
+      "Type": "CreditCard"
+    },
+    "PaymentProvider": "Paymill",
+    "PaymentProviderSupportRefunds": true,
+    "Phases": [
+      {
+          "PlanId": "53567a9e1d8dd00df056564d",
+          "StartDate": "2015-10-15T09:02:21.2750000Z",
+          "Type": "Trial"
+      },
+      {
+          "PlanId": "53567a9e1d8dd00df056564d",
+          "PlanVariantId": "53567b431d8dd00df056564f",
+          "StartDate": "2015-11-15T10:02:21.2750000Z",
+          "Type": "Normal"
+      },
+      {
+          "StartDate": "2015-12-15T10:02:21.2750000Z",
+          "Type": "Inactive"
+      }
+    ],
+    "PlanGroupId": "53567a731d8dd00df056564a",
+    "PlanId": "53567a9e1d8dd00df056564d",
+    "RecurringPaymentsPaused": false,
+    "ReferenceCode": "RFDT-ZHXM",
+    "StartDate": "2015-10-15T09:02:21.2750000Z"
+  },
+  "EndDate": "2015-12-15T10:02:21.2750000Z",
+  "Invoice": {
+      "ContractId": "561f6b9d1d8dd21334f22cb2",
+      "CustomerId": "561f6b9d1d8dd21334f22cb0",
+      "ItemList": [],
+      "RecipientAddress": {
+          "City": "Example City",
+          "Country": "DE",
+          "HouseNumber": "42",
+          "PostalCode": "12345",
+          "Street": "Example Street"
+      },
+      "RecipientName": "Example Corp.",
+      "RecipientSubName": "Max Mustermann",
+      "ReverseCharge": false,
+      "TotalGross": 0,
+      "TotalNet": 0,
+      "TotalVat": 0,
+      "VatDescriptors": []
+  },
+  "NextPossibleCancellationDate": "2015-11-15T10:02:21.2750000Z"
+}

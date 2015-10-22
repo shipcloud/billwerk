@@ -57,6 +57,34 @@ describe PactasItero::Api::Customers do
     end
   end
 
+  describe ".contract_cancellation_preview" do
+    it "requests the correct resource" do
+      client = PactasItero::Client.new(bearer_token: "bt")
+      request = stub_get("/api/v1/contracts/some_contract_id/cancellationPreview").to_return(
+        body: fixture("contract_cancellation_preview_response.json"),
+        headers: { content_type: "application/json; charset=utf-8" }
+      )
+
+      client.contract_cancellation_preview("some_contract_id")
+
+      expect(request).to have_been_made
+    end
+
+    it 'returns the next possible cancellation date' do
+      client = PactasItero::Client.new(bearer_token: 'bt')
+      request = stub_get("/api/v1/contracts/some_contract_id/cancellationPreview").to_return(
+        body: fixture("contract_cancellation_preview_response.json"),
+        headers: { content_type: "application/json; charset=utf-8" }
+      )
+
+      contract_cancellation_preview = client.contract_cancellation_preview("some_contract_id")
+
+      expect(
+        contract_cancellation_preview.next_possible_cancellation_date
+      ).to eq "2015-11-15T10:02:21.2750000Z"
+    end
+  end
+
   describe '.update_contract' do
     it 'requests the correct resource' do
       client = PactasItero::Client.new(bearer_token: 'bt')
