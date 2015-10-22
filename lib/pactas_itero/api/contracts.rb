@@ -20,6 +20,11 @@ module PactasItero
         options = options.camelize_keys
         get "api/v1/contracts/#{contract_id}", options
       end
+
+      def contract_cancellation_preview(contract_id, options = {})
+        options = options.camelize_keys
+        get "api/v1/contracts/#{contract_id}/cancellationPreview", options
+      end
     end
   end
 end
