@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/shipcloud/pactas_itero.svg)](https://travis-ci.org/shipcloud/pactas_itero)
+
 # PactasItero
 
 TODO: Write a gem description
