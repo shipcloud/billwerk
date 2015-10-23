@@ -25,9 +25,8 @@ describe PactasItero::Api::OAuth do
       expect(a_post(
         "https://a_client_id:a_client_secret@sandbox.pactas.com/oauth/token"
       ).with(
-        :body => { :grant_type => 'client_credentials' },
+        :body => "grant_type=client_credentials",
         :headers => {
-          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
           'Content-Type'=>'application/x-www-form-urlencoded; charset=UTF-8'
         }
       )).to have_been_made
