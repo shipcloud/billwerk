@@ -18,5 +18,6 @@
     "Language": "de-DE",
     "LastName": "Doe",
     "Locale": "de-DE",
-    "VatId": "DE123456710"
+    "VatId": "DE123456710",
+    "ExternalCustomerId": "1234"
 }
