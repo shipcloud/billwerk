@@ -54,6 +54,21 @@ describe PactasItero::Api::Orders do
     end
   end
 
+  describe '.order' do
+    it 'requests the correct resource' do
+      client = PactasItero::Client.new(bearer_token: 'bt')
+      request = stub_get('/api/v1/orders/5357bc4f1d8dd00fa0db6c31').
+      to_return(
+        body: fixture('order.json'),
+        headers: { content_type: 'application/json; charset=utf-8'}
+      )
+
+      client.order('5357bc4f1d8dd00fa0db6c31')
+
+      expect(request).to have_been_made
+    end
+  end
+
   describe ".commit_order" do
     it "requests the correct resource" do
       client = PactasItero::Client.new(bearer_token: 'bt')

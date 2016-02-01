@@ -1,0 +1,15 @@
+{
+  "Id": "56af22c51d8dd207684db9b5",
+  "PlanVariantId": "5357b8f11d8dd00fa0db6c1b",
+  "AllowWithoutPaymentData": false,
+  "ComponentSubscriptions": [],
+  "DiscountSubscriptions": [],
+  "Currency": "EUR",
+  "Total": 24.9,
+  "TotalVat": 4.73,
+  "TotalGross": 29.63,
+  "IsTrial": false,
+  "Status": "InProgress",
+  "CustomerId": "56af224c1d8dd207684db935",
+  "ContractId": "56af22c51d8dd207684db9b4"
+}
