@@ -18,11 +18,9 @@ describe PactasItero::Api::Orders do
         )
 
       client.create_order(
-        '5370e5ab9e40071fd01e01e0',
-        {
-          cart: {
-            plan_variant_id: "525bf9089e40073a58590fd5"
-          }
+        contract_id: "5370e5ab9e40071fd01e01e0",
+        cart: {
+          plan_variant_id: "525bf9089e40073a58590fd5"
         }
       )
 
@@ -45,11 +43,9 @@ describe PactasItero::Api::Orders do
         )
 
       order = client.create_order(
-        '5370e5ab9e40071fd01e01e0',
-        {
-          cart: {
-            plan_variant_id: "525bf9089e40073a58590fd5"
-          }
+        contract_id: "5370e5ab9e40071fd01e01e0",
+        cart: {
+          plan_variant_id: "525bf9089e40073a58590fd5"
         }
       )
 
