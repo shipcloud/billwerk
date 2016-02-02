@@ -18,11 +18,9 @@ describe PactasItero::Api::Orders do
         )
 
       client.create_order(
-        '5370e5ab9e40071fd01e01e0',
-        {
-          cart: {
-            plan_variant_id: "525bf9089e40073a58590fd5"
-          }
+        contract_id: "5370e5ab9e40071fd01e01e0",
+        cart: {
+          plan_variant_id: "525bf9089e40073a58590fd5"
         }
       )
 
@@ -45,16 +43,29 @@ describe PactasItero::Api::Orders do
         )
 
       order = client.create_order(
-        '5370e5ab9e40071fd01e01e0',
-        {
-          cart: {
-            plan_variant_id: "525bf9089e40073a58590fd5"
-          }
+        contract_id: "5370e5ab9e40071fd01e01e0",
+        cart: {
+          plan_variant_id: "525bf9089e40073a58590fd5"
         }
       )
 
       expect(order.id).to eq '537dfcab9e400760b4cd6347'
       expect(order.contract_id).to eq '5370e5ab9e40071fd01e01e0'
+    end
+  end
+
+  describe '.order' do
+    it 'requests the correct resource' do
+      client = PactasItero::Client.new(bearer_token: 'bt')
+      request = stub_get('/api/v1/orders/5357bc4f1d8dd00fa0db6c31').
+      to_return(
+        body: fixture('order.json'),
+        headers: { content_type: 'application/json; charset=utf-8'}
+      )
+
+      client.order('5357bc4f1d8dd00fa0db6c31')
+
+      expect(request).to have_been_made
     end
   end
 
