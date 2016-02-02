@@ -1,8 +1,8 @@
-## [0.1.1] - 2016-02-02
-## Added
+## [UNRELEASED]
+### Added
 - Added a changelog
 
-## Changed
+### Changed
 - create orders without a contract_id
 - add get operation for orders
 
