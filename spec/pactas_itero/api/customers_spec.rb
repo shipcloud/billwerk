@@ -1,6 +1,117 @@
 require 'spec_helper'
 
 describe PactasItero::Api::Customers do
+  describe ".create_customer" do
+    it "requests the correct resource" do
+      client = PactasItero::Client.new(bearer_token: 'bt')
+      post_data = {
+          "Address" => {
+            "City" => "Example City",
+            "Country" => "DE",
+            "HouseNumber" => "42",
+            "PostalCode" => "12345",
+            "Street" => "Example Street"
+          },
+          "CompanyName" => "Example Company",
+          "DefaultBearerMedium" => "Email",
+          "EmailAddress" => "jane.doe@example.com",
+          "ExternalCustomerId" => "1234",
+          "FirstName" => "Jane",
+          "Language" => "de-DE",
+          "LastName" => "Doe",
+          "Locale" => "de-DE",
+          "VatId" => "DE123456710"
+      }.to_json
+      request = stub_post('/api/v1/customers').with(body: post_data).to_return(
+        body: fixture('customer.json'),
+        headers: { content_type: 'application/json; charset=utf-8'}
+      )
+
+      client.create_customer(
+        address: {
+          city: "Example City",
+          country: "DE",
+          house_number: "42",
+          postal_code: "12345",
+          street: "Example Street"
+        },
+        company_name: "Example Company",
+        default_bearer_medium: "Email",
+        email_address: "jane.doe@example.com",
+        external_customer_id: "1234",
+        first_name: "Jane",
+        language: "de-DE",
+        last_name: "Doe",
+        locale: "de-DE",
+        vat_id: "DE123456710"
+      )
+
+      expect(request).to have_been_made
+    end
+
+    it 'returns the created customer' do
+      client = PactasItero::Client.new(bearer_token: 'bt')
+      post_data = {
+          "Address" => {
+            "City" => "Example City",
+            "Country" => "DE",
+            "HouseNumber" => "42",
+            "PostalCode" => "12345",
+            "Street" => "Example Street"
+          },
+          "CompanyName" => "Example Company",
+          "DefaultBearerMedium" => "Email",
+          "EmailAddress" => "jane.doe@example.com",
+          "ExternalCustomerId" => "1234",
+          "FirstName" => "Jane",
+          "Language" => "de-DE",
+          "LastName" => "Doe",
+          "Locale" => "de-DE",
+          "VatId" => "DE123456710"
+      }.to_json
+      request = stub_post('/api/v1/customers').with(body: post_data).to_return(
+        body: fixture('customer.json'),
+        headers: { content_type: 'application/json; charset=utf-8'}
+      )
+
+      customer = client.create_customer(
+        address: {
+          city: "Example City",
+          country: "DE",
+          house_number: "42",
+          postal_code: "12345",
+          street: "Example Street"
+        },
+        company_name: "Example Company",
+        default_bearer_medium: "Email",
+        email_address: "jane.doe@example.com",
+        external_customer_id: "1234",
+        first_name: "Jane",
+        language: "de-DE",
+        last_name: "Doe",
+        locale: "de-DE",
+        vat_id: "DE123456710"
+      )
+
+      address = customer.address
+      expect(address.city).to eq "Example City"
+      expect(address.country).to eq "DE"
+      expect(address.house_number).to eq "42"
+      expect(address.postal_code).to eq "12345"
+      expect(address.street).to eq "Example Street"
+
+      expect(customer.company_name).to eq "Example Company"
+      expect(customer.default_bearer_medium).to eq"Email"
+      expect(customer.email_address).to eq "jane.doe@example.com"
+      expect(customer.external_customer_id).to eq "1234"
+      expect(customer.first_name).to eq "Jane"
+      expect(customer.language).to eq "de-DE"
+      expect(customer.last_name).to eq "Doe"
+      expect(customer.locale).to eq "de-DE"
+      expect(customer.vat_id).to eq "DE123456710"
+    end
+  end
+
   describe ".customers" do
     it "requests the correct resource" do
       client = PactasItero::Client.new(bearer_token: 'bt')

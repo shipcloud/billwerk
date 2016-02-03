@@ -2,6 +2,7 @@
 ### Added
 - a changelog
 - get operation for orders
+- create_customer method
 
 ### Changed
 - create orders without a contract_id
@@ -17,7 +18,7 @@ Template:
 - something changed
 
 ### Deprecated
-- something is depricated
+- something is deprecated
 
 ### Removed
 - something was removed
