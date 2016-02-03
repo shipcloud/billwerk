@@ -1,0 +1,14 @@
+ruby:
+  config_file: .ruby-style.yml
+scss:
+  enabled: false
+coffeescript:
+  enabled: false
+haml:
+  config_file: .haml-lint.yml
+javascript:
+  enabled: false
+scss:
+  enabled: false
+haml:
+  enabled: false
