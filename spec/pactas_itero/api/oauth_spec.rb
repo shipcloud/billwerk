@@ -5,7 +5,7 @@ describe PactasItero::Api::OAuth do
   describe '#token' do
     before do
       stub_post(
-        "https://a_client_id:a_client_secret@sandbox.pactas.com/oauth/token"
+        "https://a_client_id:a_client_secret@sandbox.billwerk.com/oauth/token"
       ).with(
         :body => { :grant_type => 'client_credentials' }
       ).to_return(
@@ -23,7 +23,7 @@ describe PactasItero::Api::OAuth do
       client.token
 
       expect(a_post(
-        "https://a_client_id:a_client_secret@sandbox.pactas.com/oauth/token"
+        "https://a_client_id:a_client_secret@sandbox.billwerk.com/oauth/token"
       ).with(
         :body => "grant_type=client_credentials",
         :headers => {

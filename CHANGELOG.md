@@ -6,6 +6,7 @@
 
 ### Changed
 - create orders without a contract_id
+- changes sandbox url from sandbox.pactas.com to sandbox.billwerk.com
 
 -----------------------------------------------------------------------------------------
 

@@ -7,7 +7,7 @@ module PactasItero
   # Default configuration options for {Client}
   module Default
 
-    SANDBOX_API_ENDPOINT = "https://sandbox.pactas.com".freeze
+    SANDBOX_API_ENDPOINT = "https://sandbox.billwerk.com".freeze
 
     PRODUCTION_API_ENDPOINT = "https://itero.pactas.com".freeze
 
