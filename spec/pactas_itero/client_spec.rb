@@ -194,7 +194,7 @@ describe PactasItero::Client do
     it 'uses the sandbox endpoint by default' do
       client = PactasItero::Client.new
 
-      expect(client.api_endpoint).to eq 'https://sandbox.billwerk.com/'
+      expect(client.api_endpoint).to eq "https://sandbox.billwerk.com/"
     end
 
     it "uses the production endpoint when production is set to true" do
@@ -270,7 +270,8 @@ describe PactasItero::Client do
 
       expect { client.get('/with_message') }.to raise_error(
         PactasItero::UnprocessableEntity,
-        "GET https://sandbox.billwerk.com/with_message: 422 - 'Something' is not a valid ObjectId. Expected a 24 digit hex string."
+        "GET https://sandbox.billwerk.com/with_message: " \
+          "422 - 'Something' is not a valid ObjectId. Expected a 24 digit hex string.",
       )
     end
 
@@ -301,7 +302,7 @@ describe PactasItero::Client do
     it 'returns url of the sandbox endpoint' do
       client = PactasItero::Client.new
 
-      expect(client.sandbox_api_endpoint).to eq 'https://sandbox.billwerk.com'
+      expect(client.sandbox_api_endpoint).to eq "https://sandbox.billwerk.com"
     end
   end
 
