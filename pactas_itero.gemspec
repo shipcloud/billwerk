@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = 'pactas_itero'
   spec.version       = PactasItero::VERSION
   spec.authors       = ['Simon Fröhler']
-  spec.email         = 'simon@webionate.de'
+  spec.email         = "simon@shipcloud.io"
   spec.summary       = %q{pactas_itero provides a client mapping for accessing
     the Pactas Itero API.}
   spec.description   = %q{pactas_itero provides a client mapping for accessing

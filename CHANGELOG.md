@@ -1,5 +1,18 @@
 ## [UNRELEASED]
 ### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+## [0.2.0] - 2016-02-04
+### Added
 - a changelog
 - get operation for orders
 - create_customer method
