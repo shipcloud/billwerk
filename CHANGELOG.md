@@ -1,5 +1,6 @@
 ## [UNRELEASED]
 ### Added
+- get a self service token for a given contract
 
 ### Changed
 

@@ -25,6 +25,11 @@ module PactasItero
         options = options.camelize_keys
         get "api/v1/contracts/#{contract_id}/cancellationPreview", options
       end
+
+      def get_self_service_token_for_contract(contract_id, options = {})
+        options = options.camelize_keys
+        get "api/v1/contracts/#{contract_id}/SelfServiceToken", options
+      end
     end
   end
 end

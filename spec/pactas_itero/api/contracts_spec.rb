@@ -115,4 +115,30 @@ describe PactasItero::Api::Customers do
       expect(request).to have_been_made
     end
   end
+
+  describe ".get_self_service_token_for_contract" do
+    it "requests the correct resource" do
+      client = PactasItero::Client.new(bearer_token: "bt")
+      request = stub_get("/api/v1/contracts/5357bc4f1d8dd00fa0db6c31/SelfServiceToken").to_return(
+        body: fixture("self_service_token.json"),
+        headers: { content_type: "application/json; charset=utf-8" },
+      )
+
+      client.get_self_service_token_for_contract("5357bc4f1d8dd00fa0db6c31")
+
+      expect(request).to have_been_made
+    end
+
+    it "returns a self service token" do
+      client = PactasItero::Client.new(bearer_token: "bt")
+      stub_get("/api/v1/contracts/5357bc4f1d8dd00fa0db6c31/SelfServiceToken").to_return(
+        body: fixture("self_service_token.json"),
+        headers: { content_type: "application/json; charset=utf-8" },
+      )
+
+      self_service_token = client.get_self_service_token_for_contract("5357bc4f1d8dd00fa0db6c31")
+
+      expect(self_service_token.token).to eq "522703b9eb596a0f40480825$1378374980$JDBWmg34kr_mFIUFP"
+    end
+  end
 end
