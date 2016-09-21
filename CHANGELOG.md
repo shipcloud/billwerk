@@ -7,6 +7,7 @@
 ### Deprecated
 
 ### Removed
+- support for ruby version 1.8.x and 1.9.x
 
 ### Fixed
 
