@@ -160,6 +160,47 @@ describe PactasItero::Api::Customers do
     end
   end
 
+  describe ".customer" do
+    it "requests the correct resource" do
+      client = PactasItero::Client.new(bearer_token: "bearer_token")
+      request = stub_get("/api/v1/customers/customer-id").to_return(
+        body: fixture("customer.json"),
+        headers: { content_type: "application/json; charset=utf-8" },
+      )
+
+      client.customer("customer-id")
+
+      expect(request).to have_been_made
+    end
+
+    it "returns the customer details" do
+      client = PactasItero::Client.new(bearer_token: "bearer_token")
+      stub_get("/api/v1/customers/customer-id").to_return(
+        body: fixture("customer.json"),
+        headers: { content_type: "application/json; charset=utf-8" },
+      )
+
+      customer = client.customer("customer-id")
+
+      address = customer.address
+      expect(address.city).to eq "Example City"
+      expect(address.country).to eq "DE"
+      expect(address.house_number).to eq "42"
+      expect(address.postal_code).to eq "12345"
+      expect(address.street).to eq "Example Street"
+
+      expect(customer.company_name).to eq "Example Company"
+      expect(customer.default_bearer_medium).to eq"Email"
+      expect(customer.email_address).to eq "jane.doe@example.com"
+      expect(customer.external_customer_id).to eq "1234"
+      expect(customer.first_name).to eq "Jane"
+      expect(customer.language).to eq "de-DE"
+      expect(customer.last_name).to eq "Doe"
+      expect(customer.locale).to eq "de-DE"
+      expect(customer.vat_id).to eq "DE123456710"
+    end
+  end
+
   describe '.update_customer' do
     it 'requests the correct resource' do
       client = PactasItero::Client.new(bearer_token: 'bt')
