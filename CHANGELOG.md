@@ -3,11 +3,13 @@
 - get a self service token for a given contract
 
 ### Changed
+- update version of jruby to 9.1.5.0
 
 ### Deprecated
 
 ### Removed
 - support for ruby version 1.8.x and 1.9.x
+- support for rubinius
 
 ### Fixed
 
