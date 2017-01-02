@@ -16,6 +16,13 @@ describe PactasItero do
     it "creates new client everytime" do
       expect(PactasItero.client).to_not eq(PactasItero.client)
     end
+
+    it "allows stubbing the method" do
+      pactas_client = instance_double(PactasItero::Client)
+      allow(PactasItero).to receive(:client).and_return(pactas_client)
+
+      expect(PactasItero.client).to be_kind_of RSpec::Mocks::InstanceVerifyingDouble
+    end
   end
 
   describe ".configure" do

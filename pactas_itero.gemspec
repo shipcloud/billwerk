@@ -27,9 +27,9 @@ Gem::Specification.new do |spec|
   spec.add_dependency('faraday_middleware', '~> 0.9.1')
   spec.add_dependency('rash', '~> 0.4.0')
 
-  spec.add_development_dependency 'bundler', '~> 1.7'
-  spec.add_development_dependency 'rake', '~> 10.0'
-  spec.add_development_dependency "rspec", '~> 3.0'
-  spec.add_development_dependency("simplecov", "~> 0")
-  spec.add_development_dependency("webmock", "~> 1.18", ">= 1.18.0")
+  spec.add_development_dependency 'bundler'
+  spec.add_development_dependency 'rake'
+  spec.add_development_dependency "rspec", '~> 3.5.0'
+  spec.add_development_dependency("simplecov", "~> 0.12.0")
+  spec.add_development_dependency("webmock", "~> 2.3")
 end

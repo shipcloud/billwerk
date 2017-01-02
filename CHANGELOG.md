@@ -13,6 +13,8 @@
 - support for rubinius
 
 ### Fixed
+- issue where stubbing the PactasItero.client method caused
+  a "Stack level too deep" error on rspec > 3.3
 
 ### Security
 
