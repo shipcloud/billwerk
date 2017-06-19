@@ -71,4 +71,43 @@ describe PactasItero::Api::RatedItems do
       expect(rated_item.tax_policy_id).to eq 'tax-policy-id'
     end
   end
+
+  describe ".rated_items" do
+    it "returns rated items" do
+      client = PactasItero::Client.new(bearer_token: 'bt')
+      stub_get("/api/v1/contracts/contract-id/ratedItems").
+        to_return(
+          body: fixture("rated_items.json"),
+          headers: { content_type: "application/json; charset=utf-8"}
+        )
+
+      rated_items = client.rated_items("contract-id")
+
+      expect(rated_items).to be_a Array
+      rated_item = rated_items.first
+      expect(rated_item.id).to eq "591b847314aa03167c5a3b08"
+      expect(rated_item.line_item_id).to eq "59308e9781b1ef1190f21478"
+      expect(rated_item.quantity).to eq 1
+      expect(rated_item.price_per_unit).to eq 3.9
+      expect(rated_item.tax_policy_id).to eq "tax-policy-id"
+      expect(rated_item.description).to eq "1x DHL Versandmarken"
+      expect(rated_item.period_end).to eq "2017-05-15T22:00:00.0000000Z"
+      expect(rated_item.period_start).to eq "2017-05-15T22:00:00.0000000Z"
+    end
+  end
+
+  describe ".delete_rated_item" do
+    it "deletes a rated item" do
+      client = PactasItero::Client.new(bearer_token: 'bt')
+      stub_delete("/api/v1/ratedItems/rated-item-id").
+        to_return(
+          body: "",
+          headers: { content_type: "application/json; charset=utf-8"}
+        )
+
+      response = client.delete_rated_item("rated-item-id")
+
+      expect(response).to be_nil
+    end
+  end
 end

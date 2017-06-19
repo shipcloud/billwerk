@@ -1,0 +1,12 @@
+[
+  {
+    "id": "591b847314aa03167c5a3b08",
+    "line_item_id": "59308e9781b1ef1190f21478",
+    "description": "1x DHL Versandmarken",
+    "quantity": 1,
+    "price_per_unit": 3.9,
+    "tax_policy_id": "tax-policy-id",
+    "period_start": "2017-05-15T22:00:00.0000000Z",
+    "period_end": "2017-05-15T22:00:00.0000000Z"
+  }
+]

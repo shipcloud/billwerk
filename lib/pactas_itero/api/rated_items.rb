@@ -11,6 +11,14 @@ module PactasItero
         options = options.camelize_keys
         post "api/v1/contracts/#{contract_id}/ratedItems", options
       end
+
+      def rated_items(contract_id)
+        get "api/v1/contracts/#{contract_id}/ratedItems"
+      end
+
+      def delete_rated_item(rated_item_id)
+        delete "api/v1/ratedItems/#{rated_item_id}"
+      end
     end
   end
 end
