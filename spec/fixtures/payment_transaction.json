@@ -1,0 +1,37 @@
+{
+    "Amount": 11.89,
+    "ContractId": "592d74a981b1f010f04293a4",
+    "Currency": "EUR",
+    "CustomerId": "592d74a881b1f010f04293a2",
+    "CustomerName": "Example Company",
+    "Id": "597de03d81b1ef0d18a46f4e",
+    "PaymentProvider": "Example Provider",
+    "PaymentProviderRole": "CreditCard",
+    "Preauth": false,
+    "ProviderTransactionId": "ccec718e-271e-4d0e-b0e1-94894e40c0c7",
+    "Status": {
+        "Amount": 11.89,
+        "HttpCode": 0,
+        "Preauth": false,
+        "Status": "Succeeded",
+        "Timestamp": "2017-07-30T13:33:49.9900000Z"
+    },
+    "StatusHistory": [
+        {
+            "Amount": 11.89,
+            "HttpCode": 0,
+            "Preauth": false,
+            "Status": "InProgress",
+            "Timestamp": "2017-07-30T13:33:49.9760000Z"
+        },
+        {
+            "Amount": 11.89,
+            "HttpCode": 0,
+            "Preauth": false,
+            "Status": "Succeeded",
+            "Timestamp": "2017-07-30T13:33:49.9900000Z"
+        }
+    ],
+    "StatusTimestamp": "2017-07-30T13:33:49.9900000Z",
+    "Trigger": "Recurring"
+}
