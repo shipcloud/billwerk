@@ -44,18 +44,18 @@ describe PactasItero::Api::PaymentTransactions do
       expect(transaction.status_history).to eq(
         [
           {
-            "Amount" => 11.89,
-            "HttpCode" => 0,
-            "Preauth" => false,
-            "Status" => "InProgress",
-            "Timestamp" => "2017-07-30T13:33:49.9760000Z",
+            "amount" => 11.89,
+            "http_code" => 0,
+            "preauth" => false,
+            "status" => "InProgress",
+            "timestamp" => "2017-07-30T13:33:49.9760000Z",
           },
           {
-            "Amount" => 11.89,
-            "HttpCode" => 0,
-            "Preauth" => false,
-            "Status" => "Succeeded",
-            "Timestamp" => "2017-07-30T13:33:49.9900000Z",
+            "amount" => 11.89,
+            "http_code" => 0,
+            "preauth" => false,
+            "status" => "Succeeded",
+            "timestamp" => "2017-07-30T13:33:49.9900000Z",
           },
         ],
       )
