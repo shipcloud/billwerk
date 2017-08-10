@@ -3,6 +3,7 @@
 - get a self service token for a given contract
 - get a specific customer by id
 - get and delete rated items
+- get a specific payment transaction by id
 
 ### Changed
 - update version of jruby to 9.1.5.0
