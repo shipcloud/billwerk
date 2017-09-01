@@ -30,6 +30,11 @@ module PactasItero
         options = options.camelize_keys
         get "api/v1/contracts/#{contract_id}/SelfServiceToken", options
       end
+
+      def terminate_contract(contract_id, options = {})
+        options = options.camelize_keys
+        post "api/v1/contracts/#{contract_id}/end", options
+      end
     end
   end
 end
