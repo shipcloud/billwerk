@@ -116,6 +116,27 @@ describe PactasItero::Api::Customers do
     end
   end
 
+  describe ".terminate_contract" do
+    it "requests the correct resource" do
+      client = PactasItero::Client.new(bearer_token: "bt")
+      request = stub_post("/api/v1/contracts/5922f50b81b1f007e0e4d738/end").
+        with(
+          body: { EndDate: "2017-10-01T14:51:29.3390000Z" }.to_json,
+        ).
+        to_return(
+          body: fixture("contract_termination_response.json"),
+          headers: { content_type: "application/json; charset=utf-8" },
+        )
+
+      client.terminate_contract(
+        "5922f50b81b1f007e0e4d738",
+        end_date: "2017-10-01T14:51:29.3390000Z",
+      )
+
+      expect(request).to have_been_made
+    end
+  end
+
   describe ".get_self_service_token_for_contract" do
     it "requests the correct resource" do
       client = PactasItero::Client.new(bearer_token: "bt")

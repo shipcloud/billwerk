@@ -1,0 +1,79 @@
+{
+    "ContractAfter": {
+        "Balance": -7.27,
+        "BilledUntil": "2017-09-30T22:00:00.0000000Z",
+        "BillingSuspended": false,
+        "Currency": "EUR",
+        "CurrentPhase": {
+            "PlanId": "5357b8561d8dd00fa0db6c19",
+            "PlanVariantId": "5357b8f11d8dd00fa0db6c1b",
+            "Quantity": 1,
+            "StartDate": "2017-08-08T12:30:39.8320000Z",
+            "Type": "Normal"
+        },
+        "CustomFields": {},
+        "CustomerId": "5922f1eeba5c1e0570f72e04",
+        "CustomerName": "Musterfirma",
+        "EndDate": "2017-10-01T14:51:29.3390000Z",
+        "EscalationSuspended": false,
+        "Id": "5922f50b81b1f007e0e4d738",
+        "IsDeletable": false,
+        "LastBillingDate": "2017-08-31T22:00:00.0000000Z",
+        "LifecycleStatus": "Active",
+        "NextBillingDate": "2017-09-30T22:00:00.0000000Z",
+        "PaymentProvider": "PayOne",
+        "PaymentProviderRole": "OnAccount",
+        "PaymentProviderSupportRefunds": true,
+        "Phases": [
+            {
+                "PlanId": "5357b8561d8dd00fa0db6c19",
+                "PlanVariantId": "5357b8f11d8dd00fa0db6c1b",
+                "Quantity": 1,
+                "StartDate": "2017-05-22T14:26:19.6390000Z",
+                "Type": "Normal"
+            },
+            {
+                "StartDate": "2017-05-22T14:26:20.0000000Z",
+                "Type": "Inactive"
+            },
+            {
+                "PlanId": "5357b8561d8dd00fa0db6c19",
+                "PlanVariantId": "5357b8f11d8dd00fa0db6c1b",
+                "Quantity": 1,
+                "StartDate": "2017-08-08T12:30:39.8320000Z",
+                "Type": "Normal"
+            },
+            {
+                "StartDate": "2017-10-01T14:51:29.3390000Z",
+                "Type": "Inactive"
+            }
+        ],
+        "PlanGroupId": "53567a731d8dd00df056564a",
+        "PlanId": "5357b8561d8dd00fa0db6c19",
+        "PlanVariantId": "5357b8f11d8dd00fa0db6c1b",
+        "RecurringPaymentsPaused": false,
+        "ReferenceCode": "NYXC-NPXH",
+        "StartDate": "2017-05-22T14:26:19.6390000Z"
+    },
+    "EndDate": "2017-10-01T14:51:29.3390000Z",
+    "Invoice": {
+        "ContractId": "5922f50b81b1f007e0e4d738",
+        "CustomerId": "5922f1eeba5c1e0570f72e04",
+        "ExternalCustomerId": "a0979458",
+        "ItemList": [],
+        "RecipientAddress": {
+            "City": "Musterstadt",
+            "Country": "DE",
+            "HouseNumber": "123",
+            "PostalCode": "12345",
+            "Street": "Musterstraße, 123"
+        },
+        "RecipientName": "Musterfirma",
+        "RecipientSubName": "Max Mustermann",
+        "ReverseCharge": false,
+        "TotalGross": 0,
+        "TotalNet": 0,
+        "TotalVat": 0,
+        "VatDescriptors": []
+    }
+}
