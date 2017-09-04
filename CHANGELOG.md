@@ -1,5 +1,18 @@
 ## [UNRELEASED]
 ### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+## [0.3.0] - 2017-09-04
+### Added
 - get a self service token for a given contract
 - get a specific customer by id
 - get and delete rated items
