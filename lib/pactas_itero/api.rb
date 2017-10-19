@@ -6,6 +6,7 @@ require 'pactas_itero/api/contracts'
 require 'pactas_itero/api/orders'
 require 'pactas_itero/api/invoices'
 require "pactas_itero/api/payment_transactions"
+require "pactas_itero/api/plans"
 
 module PactasItero
   module Api
@@ -16,5 +17,6 @@ module PactasItero
     include PactasItero::Api::Orders
     include PactasItero::Api::Invoices
     include PactasItero::Api::PaymentTransactions
+    include PactasItero::Api::Plans
   end
 end
