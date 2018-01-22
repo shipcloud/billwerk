@@ -36,12 +36,12 @@ module PactasItero
         post "api/v1/contracts/#{contract_id}/end", options
       end
 
-      def ledgerEntries_for_contract(contract_id, options = {})
+      def ledger_entries_for_contract(contract_id, options = {})
         options = options.camelize_keys
         get "api/v1/contracts/#{contract_id}/ledgerEntries", options
       end
 
-      def changePaymentMethod_for_contract(contract_id, options = {})
+      def change_payment_method_for_contract(contract_id, options = {})
         options = options.camelize_keys
         post "api/v1/contracts/#{contract_id}/changepaymentmethod", options
       end
