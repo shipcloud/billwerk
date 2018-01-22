@@ -11,6 +11,16 @@ module PactasItero
         get "api/v1/plans/#{plan_id}", options
       end
 
+      def create_plan(options = {})
+        options = options.camelize_keys
+        post "api/v1/plans", options
+      end
+
+      def update_plan(plan_id, options = {})
+        options = options.camelize_keys
+        patch "api/v1/plans/#{plan_id}", options
+      end
+
       def plan_variants(options = {})
         options = options.camelize_keys
         get "api/v1/planvariants", options
@@ -19,6 +29,16 @@ module PactasItero
       def plan_variant(planvariant_id, options = {})
         options = options.camelize_keys
         get "api/v1/planvariants/#{planvariant_id}", options
+      end
+
+      def create_plan_variant(options = {})
+        options = options.camelize_keys
+        post "api/v1/planvariants", options
+      end
+
+      def update_plan_variant(planvariant_id, options = {})
+        options = options.camelize_keys
+        patch "api/v1/planvariants/#{planvariant_id}", options
       end
 
       def plan_variants_for_plan(plan_id, options = {})

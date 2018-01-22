@@ -46,6 +46,15 @@ module PactasItero
         post "api/v1/contracts/#{contract_id}/changepaymentmethod", options
       end
 
+      def subscribe_component_for_contract(contract_id, options = {})
+        options = options.camelize_keys
+        post "api/v1/contracts/#{contract_id}/componentsubscriptions", options
+
+        ## ComponentType:Metered
+        ## ComponentType:QuantityBased
+
+      end
+
     end
   end
 end
