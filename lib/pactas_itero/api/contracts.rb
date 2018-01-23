@@ -50,9 +50,6 @@ module PactasItero
         options = options.camelize_keys
         post "api/v1/contracts/#{contract_id}/componentsubscriptions", options
 
-        ## ComponentType:Metered
-        ## ComponentType:QuantityBased
-
       end
 
     end

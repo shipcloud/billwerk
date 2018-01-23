@@ -32,7 +32,7 @@ PactasItero.client_secret = "my_billwerk_client_secret"
 
 ### Examples:
 
-####1) Create-Plan Example
+#### 1) Create-Plan Example
 
 ```
 plangroup_id = "16dc8c7gba5c2202143de8b5"
@@ -50,9 +50,9 @@ plan_options[:IsDeletable] = false
 @plan=@billwerkClient.create_plan(plangroup_id,plan_options)
 ```
 
-####2) Create-Order Example   
+#### 2) Create-Order Example   
 
-#####Submitted via Order-Form (Example Data)
+##### Submitted via Order-Form (Example Data)
 
 ```
 Parameters: {"Cart"=>{"PlanVariantId"=>"19dc8c7gba5c2202143de1s9"}, 
@@ -61,7 +61,7 @@ Parameters: {"Cart"=>{"PlanVariantId"=>"19dc8c7gba5c2202143de1s9"},
 	"Bearer"=>{"holder"=>"Mustermann Ltd", "iban"=>"DE883299699663", "bic"=>"HAC556AXXX"}}
 ```
 
-#####Usage in Order-Controller 
+##### Usage in Order-Controller 
 
 ```
 orderOptions = {}
@@ -86,7 +86,7 @@ orderOptions[:StartDate] = Time.now.to_formatted_s(:iso8601)
 @order=@billwerkClient.create_order(orderOptions)  
 ```
 
-#####On Success Commit-Order via Order-Controller 
+##### On Success Commit-Order via Order-Controller 
 
 ```
 commitOptions = {}
