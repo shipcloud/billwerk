@@ -24,9 +24,14 @@ class Hash
   end
 
   # copied from ActiveSupport
+  # do not camelize exact "_c"
   def camelize(term)
     string = term.to_s
-    string = string.sub(/^[a-z\d]*/) { $&.capitalize }
-    string.gsub(/(?:_|(\/))([a-z\d]*)/) { "#{$1}#{$2.capitalize}" }.gsub('/', '::')
+    if (string.downcase == '_c')
+      string
+    else
+      string = string.sub(/^[a-z\d]*/) { $&.capitalize }
+      string.gsub(/(?:_|(\/))([a-z\d]*)/) { "#{$1}#{$2.capitalize}" }.gsub('/', '::')
+    end
   end
 end

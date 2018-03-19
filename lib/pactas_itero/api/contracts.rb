@@ -35,6 +35,11 @@ module PactasItero
         options = options.camelize_keys
         post "api/v1/contracts/#{contract_id}/end", options
       end
+      
+      def annulate_contract(contract_id, options = {})
+        options = options.camelize_keys
+        post "api/v1/contracts/#{contract_id}/annulate", options
+      end
 
       def ledger_entries_for_contract(contract_id, options = {})
         options = options.camelize_keys
