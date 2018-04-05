@@ -23,7 +23,7 @@ module PactasItero
       
       def coupon_by_code(coupon_code, options = {})
         options = options.camelize_keys
-        get "api/v1/coupons/?couponCode=#{coupon_code}", options
+        get "api/v1/coupons/?couponCode=#{coupon_code}&active=true", options
       end
 
     end
