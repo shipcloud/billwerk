@@ -1,0 +1,15 @@
+---
+version: "2"
+plugins:
+  duplication:
+    enabled: true
+  eslint:
+    enabled: false
+  fixme:
+    enabled: true
+  rubocop:
+    enabled: false
+exclude_patterns:
+  - spec/**/*
+  - vendor/**/*
+  - gems/**/*
