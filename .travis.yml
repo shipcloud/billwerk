@@ -1,6 +1,8 @@
 sudo: false
 language: ruby
 cache: bundler
+before_install:
+  gem install bundler --no-doc
 rvm:
   - ruby-head
   - 2.5
