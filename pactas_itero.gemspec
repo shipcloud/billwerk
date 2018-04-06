@@ -33,4 +33,10 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency("rubocop", '~> 0.52.1') # check houndci compatibility before updating rubocop
   spec.add_development_dependency("simplecov", "~> 0.15.0")
   spec.add_development_dependency("webmock", "~> 3.3")
+
+  spec.post_install_message = <<-MESSAGE
+    !    The 'pactas_itero' gem has been deprecated and has been renamed to 'billwerk'.
+    !    See: https://rubygems.org/gems/billwerk
+    !    And: https://github.com/shipcloud/billwerk
+  MESSAGE
 end
