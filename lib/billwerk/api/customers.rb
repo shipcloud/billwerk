@@ -1,4 +1,4 @@
-module PactasItero
+module Billwerk
   module Api
     module Customers
       def create_customer(options = {})

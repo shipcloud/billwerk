@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 require "spec_helper"
 
-describe PactasItero::Api::PaymentTransactions do
+describe Billwerk::Api::PaymentTransactions do
   describe ".payment_transaction" do
     it "requests the correct resource" do
-      client = PactasItero::Client.new(bearer_token: "bearer_token")
+      client = Billwerk::Client.new(bearer_token: "bearer_token")
       request = stub_get("/api/v1/PaymentTransactions/payment_transaction_id").to_return(
         body: fixture("payment_transaction.json"),
         headers: { content_type: "application/json; charset=utf-8" },
@@ -16,7 +16,7 @@ describe PactasItero::Api::PaymentTransactions do
     end
 
     it "returns the payment transaction details" do
-      client = PactasItero::Client.new(bearer_token: "bearer_token")
+      client = Billwerk::Client.new(bearer_token: "bearer_token")
       stub_get("/api/v1/PaymentTransactions/payment_transaction_id").to_return(
         body: fixture("payment_transaction.json"),
         headers: { content_type: "application/json; charset=utf-8" },

@@ -1,5 +1,5 @@
 
-module PactasItero
+module Billwerk
   module Api
     module OAuth
       def token(options = {})

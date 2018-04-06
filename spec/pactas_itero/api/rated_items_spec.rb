@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe PactasItero::Api::RatedItems do
+describe Billwerk::Api::RatedItems do
   describe ".create_rated_item" do
     it "requests the correct resource" do
-      client = PactasItero::Client.new(bearer_token: 'bt')
+      client = Billwerk::Client.new(bearer_token: 'bt')
       post_data = {
         PeriodStart: '2014-09-19T08:18:51.907Z',
         PeriodEnd: '2014-09-19T08:19:51.907Z',
@@ -35,7 +35,7 @@ describe PactasItero::Api::RatedItems do
     end
 
     it 'returns the created rated item' do
-      client = PactasItero::Client.new(bearer_token: 'bt')
+      client = Billwerk::Client.new(bearer_token: 'bt')
       post_data = {
         PeriodStart: '2014-09-19T08:18:51.907Z',
         PeriodEnd: '2014-09-19T08:19:51.907Z',
@@ -74,7 +74,7 @@ describe PactasItero::Api::RatedItems do
 
   describe ".rated_items" do
     it "returns rated items" do
-      client = PactasItero::Client.new(bearer_token: 'bt')
+      client = Billwerk::Client.new(bearer_token: 'bt')
       stub_get("/api/v1/contracts/contract-id/ratedItems").
         to_return(
           body: fixture("rated_items.json"),
@@ -98,7 +98,7 @@ describe PactasItero::Api::RatedItems do
 
   describe ".delete_rated_item" do
     it "deletes a rated item" do
-      client = PactasItero::Client.new(bearer_token: 'bt')
+      client = Billwerk::Client.new(bearer_token: 'bt')
       stub_delete("/api/v1/ratedItems/rated-item-id").
         to_return(
           body: "",

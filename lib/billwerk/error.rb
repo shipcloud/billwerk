@@ -1,32 +1,32 @@
-module PactasItero
-  # Custom error class for rescuing from all Pactas errors
+module Billwerk
+  # Custom error class for rescuing from all Billwerk errors
   class Error < StandardError
 
-    # Returns the appropriate PactasItero::Error sublcass based
+    # Returns the appropriate Billwerk::Error sublcass based
     # on status and response message
     #
     # @param [Hash] response HTTP response
-    # @return [PactasItero::Error]
+    # @return [Billwerk::Error]
     def self.from_response(response)
       status  = response[:status].to_i
       body    = response[:body].to_s
       headers = response[:response_headers]
 
       if klass =  case status
-                  when 400      then PactasItero::BadRequest
+                  when 400      then Billwerk::BadRequest
                   when 401      then error_for_401(headers)
                   when 403      then error_for_403(body)
-                  when 404      then PactasItero::NotFound
-                  when 406      then PactasItero::NotAcceptable
-                  when 409      then PactasItero::Conflict
-                  when 415      then PactasItero::UnsupportedMediaType
-                  when 422      then PactasItero::UnprocessableEntity
-                  when 400..499 then PactasItero::ClientError
-                  when 500      then PactasItero::InternalServerError
-                  when 501      then PactasItero::NotImplemented
-                  when 502      then PactasItero::BadGateway
-                  when 503      then PactasItero::ServiceUnavailable
-                  when 500..599 then PactasItero::ServerError
+                  when 404      then Billwerk::NotFound
+                  when 406      then Billwerk::NotAcceptable
+                  when 409      then Billwerk::Conflict
+                  when 415      then Billwerk::UnsupportedMediaType
+                  when 422      then Billwerk::UnprocessableEntity
+                  when 400..499 then Billwerk::ClientError
+                  when 500      then Billwerk::InternalServerError
+                  when 501      then Billwerk::NotImplemented
+                  when 502      then Billwerk::BadGateway
+                  when 503      then Billwerk::ServiceUnavailable
+                  when 500..599 then Billwerk::ServerError
                   end
         klass.new(response)
       end
@@ -40,10 +40,10 @@ module PactasItero
     # Returns most appropriate error for 401 HTTP status code
     # @private
     def self.error_for_401(headers)
-      if PactasItero::OneTimePasswordRequired.required_header(headers)
-        PactasItero::OneTimePasswordRequired
+      if Billwerk::OneTimePasswordRequired.required_header(headers)
+        Billwerk::OneTimePasswordRequired
       else
-        PactasItero::Unauthorized
+        Billwerk::Unauthorized
       end
     end
 
@@ -51,11 +51,11 @@ module PactasItero
     # @private
     def self.error_for_403(body)
       if body =~ /rate limit exceeded/i
-        PactasItero::TooManyRequests
+        Billwerk::TooManyRequests
       elsif body =~ /login attempts exceeded/i
-        PactasItero::TooManyLoginAttempts
+        Billwerk::TooManyLoginAttempts
       else
-        PactasItero::Forbidden
+        Billwerk::Forbidden
       end
     end
 
@@ -134,21 +134,21 @@ module PactasItero
   # Raised on errors in the 400-499 range
   class ClientError < Error; end
 
-  # Raised when Pactas returns a 400 HTTP status code
+  # Raised when Billwerk returns a 400 HTTP status code
   class BadRequest < ClientError; end
 
-  # Raised when Pactas returns a 401 HTTP status code
+  # Raised when Billwerk returns a 401 HTTP status code
   class Unauthorized < ClientError; end
 
-  # Raised when Pactas returns a 401 HTTP status code
-  # and headers include "X-Pactas-OTP"
+  # Raised when Billwerk returns a 401 HTTP status code
+  # and headers include "X-Billwerk-OTP"
   class OneTimePasswordRequired < ClientError
     #@private
     OTP_DELIVERY_PATTERN = /required; (\w+)/i
 
     #@private
     def self.required_header(headers)
-      OTP_DELIVERY_PATTERN.match headers['X-Pactas-OTP'].to_s
+      OTP_DELIVERY_PATTERN.match headers['X-Billwerk-OTP'].to_s
     end
 
     # Delivery method for the user's OTP
@@ -167,45 +167,45 @@ module PactasItero
     end
   end
 
-  # Raised when Pactas returns a 403 HTTP status code
+  # Raised when Billwerk returns a 403 HTTP status code
   class Forbidden < ClientError; end
 
-  # Raised when Pactas returns a 403 HTTP status code
+  # Raised when Billwerk returns a 403 HTTP status code
   # and body matches 'rate limit exceeded'
   class TooManyRequests < Forbidden; end
 
-  # Raised when Pactas returns a 403 HTTP status code
+  # Raised when Billwerk returns a 403 HTTP status code
   # and body matches 'login attempts exceeded'
   class TooManyLoginAttempts < Forbidden; end
 
-  # Raised when Pactas returns a 404 HTTP status code
+  # Raised when Billwerk returns a 404 HTTP status code
   class NotFound < ClientError; end
 
-  # Raised when Pactas returns a 406 HTTP status code
+  # Raised when Billwerk returns a 406 HTTP status code
   class NotAcceptable < ClientError; end
 
-  # Raised when Pactas returns a 409 HTTP status code
+  # Raised when Billwerk returns a 409 HTTP status code
   class Conflict < ClientError; end
 
-  # Raised when Pactas returns a 414 HTTP status code
+  # Raised when Billwerk returns a 414 HTTP status code
   class UnsupportedMediaType < ClientError; end
 
-  # Raised when Pactas returns a 422 HTTP status code
+  # Raised when Billwerk returns a 422 HTTP status code
   class UnprocessableEntity < ClientError; end
 
   # Raised on errors in the 500-599 range
   class ServerError < Error; end
 
-  # Raised when Pactas returns a 500 HTTP status code
+  # Raised when Billwerk returns a 500 HTTP status code
   class InternalServerError < ServerError; end
 
-  # Raised when Pactas returns a 501 HTTP status code
+  # Raised when Billwerk returns a 501 HTTP status code
   class NotImplemented < ServerError; end
 
-  # Raised when Pactas returns a 502 HTTP status code
+  # Raised when Billwerk returns a 502 HTTP status code
   class BadGateway < ServerError; end
 
-  # Raised when Pactas returns a 503 HTTP status code
+  # Raised when Billwerk returns a 503 HTTP status code
   class ServiceUnavailable < ServerError; end
 
   # Raised when client fails to provide valid Content-Type

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module PactasItero
+module Billwerk
   module Api
     module PaymentTransactions
       def payment_transaction(payment_transaction_id)

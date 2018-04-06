@@ -1,4 +1,4 @@
-module PactasItero
+module Billwerk
   module Api
     module Orders
       def create_order(options = {})

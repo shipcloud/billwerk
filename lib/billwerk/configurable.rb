@@ -1,4 +1,4 @@
-module PactasItero
+module Billwerk
 
   module Configurable
     attr_accessor :bearer_token, :client_id, :client_secret, :user_agent,
@@ -6,7 +6,7 @@ module PactasItero
     attr_writer :api_endpoint
     class << self
 
-      # List of configurable keys for PactasItero::Client
+      # List of configurable keys for Billwerk::Client
       def keys
         @keys ||= [
           :bearer_token,
@@ -28,8 +28,8 @@ module PactasItero
 
     # Reset configuration options to default values
     def reset!
-      PactasItero::Configurable.keys.each do |key|
-        send(:"#{key}=", PactasItero::Default.options[key])
+      Billwerk::Configurable.keys.each do |key|
+        send(:"#{key}=", Billwerk::Default.options[key])
       end
       self
     end
@@ -43,17 +43,17 @@ module PactasItero
     end
 
     def sandbox_api_endpoint
-      PactasItero::Default.sandbox_api_endpoint
+      Billwerk::Default.sandbox_api_endpoint
     end
 
     def production_api_endpoint
-      PactasItero::Default.production_api_endpoint
+      Billwerk::Default.production_api_endpoint
     end
 
     private
 
     def options
-      Hash[PactasItero::Configurable.keys.map{|key| [key, send(:"#{key}")]}]
+      Hash[Billwerk::Configurable.keys.map{|key| [key, send(:"#{key}")]}]
     end
   end
 end

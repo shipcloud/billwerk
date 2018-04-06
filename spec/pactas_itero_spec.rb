@@ -1,37 +1,37 @@
 require 'spec_helper'
 
-describe PactasItero do
+describe Billwerk do
 
   it "sets defaults" do
-    PactasItero::Configurable.keys.each do |key|
-      expect(PactasItero.instance_variable_get(:"@#{key}")).to eq(PactasItero::Default.send(key))
+    Billwerk::Configurable.keys.each do |key|
+      expect(Billwerk.instance_variable_get(:"@#{key}")).to eq(Billwerk::Default.send(key))
     end
   end
 
   describe ".client" do
-    it "creates an PactasItero::Client" do
-      expect(PactasItero.client).to be_kind_of PactasItero::Client
+    it "creates an Billwerk::Client" do
+      expect(Billwerk.client).to be_kind_of Billwerk::Client
     end
 
     it "creates new client everytime" do
-      expect(PactasItero.client).to_not eq(PactasItero.client)
+      expect(Billwerk.client).to_not eq(Billwerk.client)
     end
 
     it "allows stubbing the method" do
-      pactas_client = instance_double(PactasItero::Client)
-      allow(PactasItero).to receive(:client).and_return(pactas_client)
+      billwerk_client = instance_double(Billwerk::Client)
+      allow(Billwerk).to receive(:client).and_return(billwerk_client)
 
-      expect(PactasItero.client).to be_kind_of RSpec::Mocks::InstanceVerifyingDouble
+      expect(Billwerk.client).to be_kind_of RSpec::Mocks::InstanceVerifyingDouble
     end
   end
 
   describe ".configure" do
-    PactasItero::Configurable.keys.each do |key|
+    Billwerk::Configurable.keys.each do |key|
       it "sets the #{key.to_s.gsub('_', ' ')}" do
-        PactasItero.configure do |config|
+        Billwerk.configure do |config|
           config.send("#{key}=", key)
         end
-        expect(PactasItero.instance_variable_get(:"@#{key}")).to eq(key)
+        expect(Billwerk.instance_variable_get(:"@#{key}")).to eq(key)
       end
     end
   end

@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe PactasItero::Api::Orders do
+describe Billwerk::Api::Orders do
   describe ".create_order" do
     it "requests the correct resource" do
-      client = PactasItero::Client.new(bearer_token: 'bt')
+      client = Billwerk::Client.new(bearer_token: 'bt')
       post_data = {
         ContractId: "5370e5ab9e40071fd01e01e0",
         Cart: {
@@ -28,7 +28,7 @@ describe PactasItero::Api::Orders do
     end
 
     it 'returns the created order' do
-      client = PactasItero::Client.new(bearer_token: 'bt')
+      client = Billwerk::Client.new(bearer_token: 'bt')
       post_data = {
         ContractId: "5370e5ab9e40071fd01e01e0",
         Cart: {
@@ -56,7 +56,7 @@ describe PactasItero::Api::Orders do
 
   describe '.order' do
     it 'requests the correct resource' do
-      client = PactasItero::Client.new(bearer_token: 'bt')
+      client = Billwerk::Client.new(bearer_token: 'bt')
       request = stub_get('/api/v1/orders/5357bc4f1d8dd00fa0db6c31').
       to_return(
         body: fixture('order.json'),
@@ -71,7 +71,7 @@ describe PactasItero::Api::Orders do
 
   describe ".commit_order" do
     it "requests the correct resource" do
-      client = PactasItero::Client.new(bearer_token: 'bt')
+      client = Billwerk::Client.new(bearer_token: 'bt')
       request = stub_post('/api/v1/orders/537dfcab9e400760b4cd6347/commit').
         with(body: {}.to_json).
         to_return(
@@ -85,7 +85,7 @@ describe PactasItero::Api::Orders do
     end
 
     it 'returns the updated contract' do
-      client = PactasItero::Client.new(bearer_token: 'bt')
+      client = Billwerk::Client.new(bearer_token: 'bt')
       request = stub_post('/api/v1/orders/537dfcab9e400760b4cd6347/commit').
         with(body: {}.to_json).
         to_return(

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe PactasItero::Api::OAuth do
+describe Billwerk::Api::OAuth do
   describe "#token" do
     it "requests the correct resource" do
       client_credentials_request = stub_post("https://sandbox.billwerk.com/oauth/token").with(
@@ -11,7 +11,7 @@ describe PactasItero::Api::OAuth do
         },
       )
 
-      client = PactasItero::Client.new(client_id: "a_client_id", client_secret: "a_client_secret")
+      client = Billwerk::Client.new(client_id: "a_client_id", client_secret: "a_client_secret")
 
       client.token
 
@@ -33,7 +33,7 @@ describe PactasItero::Api::OAuth do
         },
       )
 
-      client = PactasItero::Client.new(client_id: "a_client_id", client_secret: "a_client_secret")
+      client = Billwerk::Client.new(client_id: "a_client_id", client_secret: "a_client_secret")
       bearer_token = client.token
 
       expect(bearer_token.access_token).to eq("top_secret_access_token")

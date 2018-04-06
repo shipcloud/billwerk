@@ -1,18 +1,18 @@
 require 'faraday'
-require 'pactas_itero/error'
+require 'billwerk/error'
 
-module PactasItero
+module Billwerk
   # Faraday response middleware
   module Response
 
-    # This class raises an PactasItero-flavored exception based
+    # This class raises an Billwerk-flavored exception based
     # HTTP status codes returned by the API
     class RaiseError < Faraday::Response::Middleware
 
       private
 
       def on_complete(response)
-        if error = PactasItero::Error.from_response(response)
+        if error = Billwerk::Error.from_response(response)
           raise error
         end
       end

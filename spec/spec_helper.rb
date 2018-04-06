@@ -12,7 +12,7 @@ SimpleCov.start do
 end
 
 require 'json'
-require 'pactas_itero'
+require 'billwerk'
 require 'rspec'
 require 'webmock/rspec'
 
@@ -39,7 +39,7 @@ RSpec.configure do |config|
   ]
 
   config.after(:each) do
-    PactasItero.reset!
+    Billwerk.reset!
   end
 end
 
@@ -51,50 +51,50 @@ def fixture(file)
   File.new(fixture_path + '/' + file)
 end
 
-def pactas_api_endpoint
-  PactasItero::Default::SANDBOX_API_ENDPOINT
+def billwerk_api_endpoint
+  Billwerk::Default::SANDBOX_API_ENDPOINT
 end
 
-def pactas_api_url(url)
-  url =~ /^http/ ? url : "#{pactas_api_endpoint}#{url}"
+def billwerk_api_url(url)
+  url =~ /^http/ ? url : "#{billwerk_api_endpoint}#{url}"
 end
 
 def a_delete(path)
-  a_request(:delete, pactas_api_url(path))
+  a_request(:delete, billwerk_api_url(path))
 end
 
 def a_get(path)
-  a_request(:get, pactas_api_url(path))
+  a_request(:get, billwerk_api_url(path))
 end
 
 def a_post(path)
-  a_request(:post, pactas_api_url(path))
+  a_request(:post, billwerk_api_url(path))
 end
 
 def a_put(path)
-  a_request(:put, pactas_api_url(path))
+  a_request(:put, billwerk_api_url(path))
 end
 
 def stub_delete(path)
-  stub_request(:delete, pactas_api_url(path))
+  stub_request(:delete, billwerk_api_url(path))
 end
 
 def stub_get(path)
-  stub_request(:get, pactas_api_url(path))
+  stub_request(:get, billwerk_api_url(path))
 end
 
 def stub_head(path)
-  stub_request(:head, pactas_api_url(path))
+  stub_request(:head, billwerk_api_url(path))
 end
 
 def stub_post(path)
-  stub_request(:post, pactas_api_url(path))
+  stub_request(:post, billwerk_api_url(path))
 end
 
 def stub_put(path)
-  stub_request(:put, pactas_api_url(path))
+  stub_request(:put, billwerk_api_url(path))
 end
 
 def stub_patch(path)
-  stub_request(:patch, pactas_api_url(path))
+  stub_request(:patch, billwerk_api_url(path))
 end

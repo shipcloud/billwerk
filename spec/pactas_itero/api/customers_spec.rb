@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe PactasItero::Api::Customers do
+describe Billwerk::Api::Customers do
   describe ".create_customer" do
     it "requests the correct resource" do
-      client = PactasItero::Client.new(bearer_token: 'bt')
+      client = Billwerk::Client.new(bearer_token: 'bt')
       post_data = {
           "Address" => {
             "City" => "Example City",
@@ -50,7 +50,7 @@ describe PactasItero::Api::Customers do
     end
 
     it 'returns the created customer' do
-      client = PactasItero::Client.new(bearer_token: 'bt')
+      client = Billwerk::Client.new(bearer_token: 'bt')
       post_data = {
           "Address" => {
             "City" => "Example City",
@@ -114,7 +114,7 @@ describe PactasItero::Api::Customers do
 
   describe ".customers" do
     it "requests the correct resource" do
-      client = PactasItero::Client.new(bearer_token: 'bt')
+      client = Billwerk::Client.new(bearer_token: 'bt')
       request = stub_get('/api/v1/customers').
       to_return(
         body: fixture('customers.json'),
@@ -127,7 +127,7 @@ describe PactasItero::Api::Customers do
     end
 
     it 'returns an array of customers' do
-      client = PactasItero::Client.new(bearer_token: 'bt')
+      client = Billwerk::Client.new(bearer_token: 'bt')
       request = stub_get('/api/v1/customers').
       to_return(
         body: fixture('customers.json'),
@@ -162,7 +162,7 @@ describe PactasItero::Api::Customers do
 
   describe ".customer" do
     it "requests the correct resource" do
-      client = PactasItero::Client.new(bearer_token: "bearer_token")
+      client = Billwerk::Client.new(bearer_token: "bearer_token")
       request = stub_get("/api/v1/customers/customer-id").to_return(
         body: fixture("customer.json"),
         headers: { content_type: "application/json; charset=utf-8" },
@@ -174,7 +174,7 @@ describe PactasItero::Api::Customers do
     end
 
     it "returns the customer details" do
-      client = PactasItero::Client.new(bearer_token: "bearer_token")
+      client = Billwerk::Client.new(bearer_token: "bearer_token")
       stub_get("/api/v1/customers/customer-id").to_return(
         body: fixture("customer.json"),
         headers: { content_type: "application/json; charset=utf-8" },
@@ -203,7 +203,7 @@ describe PactasItero::Api::Customers do
 
   describe '.update_customer' do
     it 'requests the correct resource' do
-      client = PactasItero::Client.new(bearer_token: 'bt')
+      client = Billwerk::Client.new(bearer_token: 'bt')
       request = stub_patch('/api/v1/customers/customer-id').
       with(
         body: {
