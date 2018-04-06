@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe PactasItero::Api::Invoices do
+describe Billwerk::Api::Invoices do
   describe '.invoices' do
     it 'requests the correct resource' do
-      client = PactasItero::Client.new(bearer_token: 'bt')
+      client = Billwerk::Client.new(bearer_token: 'bt')
       request = stub_get('/api/v1/invoices').
       to_return(
       body: fixture('invoices.json'),
@@ -16,7 +16,7 @@ describe PactasItero::Api::Invoices do
     end
 
     it 'returns an array of contracts' do
-      client = PactasItero::Client.new(bearer_token: 'bt')
+      client = Billwerk::Client.new(bearer_token: 'bt')
       request = stub_get('/api/v1/invoices').
       to_return(
       body: fixture('invoices.json'),
@@ -31,7 +31,7 @@ describe PactasItero::Api::Invoices do
 
   describe '.invoices_from' do
     it 'requests the correct resource' do
-      client = PactasItero::Client.new(bearer_token: 'bt')
+      client = Billwerk::Client.new(bearer_token: 'bt')
       request = stub_get('/api/v1/invoices?from=54b67d9e995ec90bc8f37718').
       to_return(
       body: fixture('invoices.json'),
@@ -44,7 +44,7 @@ describe PactasItero::Api::Invoices do
     end
 
     it 'requests the correct resource, if from parameter is nil' do
-      client = PactasItero::Client.new(bearer_token: 'bt')
+      client = Billwerk::Client.new(bearer_token: 'bt')
       request = stub_get('/api/v1/invoices').
       to_return(
       body: fixture('invoices.json'),
@@ -57,7 +57,7 @@ describe PactasItero::Api::Invoices do
     end
 
     it 'returns an array of contracts' do
-      client = PactasItero::Client.new(bearer_token: 'bt')
+      client = Billwerk::Client.new(bearer_token: 'bt')
       request = stub_get('/api/v1/invoices?from=54b67d9e995ec90bc8f37718').
       to_return(
       body: fixture('invoices.json'),
@@ -72,7 +72,7 @@ describe PactasItero::Api::Invoices do
 
   describe '.invoice' do
     it 'requests the correct resource' do
-      client = PactasItero::Client.new(bearer_token: 'bt')
+      client = Billwerk::Client.new(bearer_token: 'bt')
       request = stub_get('/api/v1/invoices/54b67d9e995ec90bc8f37718').
       to_return(
       body: fixture('invoice.json'),

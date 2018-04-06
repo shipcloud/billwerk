@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe PactasItero::Api::Customers do
+describe Billwerk::Api::Customers do
   describe '.customer_contracts' do
     it 'requests the correct resource' do
-      client = PactasItero::Client.new(bearer_token: 'bt')
+      client = Billwerk::Client.new(bearer_token: 'bt')
       request = stub_get('/api/v1/customers/535783241d8dd00fa0db6b2a/contracts').
       to_return(
         body: fixture('contracts.json'),
@@ -16,7 +16,7 @@ describe PactasItero::Api::Customers do
     end
 
     it 'returns an array of contracts' do
-      client = PactasItero::Client.new(bearer_token: 'bt')
+      client = Billwerk::Client.new(bearer_token: 'bt')
       request = stub_get('/api/v1/customers/535783241d8dd00fa0db6b2a/contracts').
       to_return(
         body: fixture('contracts.json'),
@@ -31,7 +31,7 @@ describe PactasItero::Api::Customers do
 
   describe '.contracts' do
     it 'requests the correct resource' do
-      client = PactasItero::Client.new(bearer_token: 'bt')
+      client = Billwerk::Client.new(bearer_token: 'bt')
       request = stub_get('/api/v1/contracts').
       to_return(
         body: fixture('contracts.json'),
@@ -44,7 +44,7 @@ describe PactasItero::Api::Customers do
     end
 
     it 'returns an array of contracts' do
-      client = PactasItero::Client.new(bearer_token: 'bt')
+      client = Billwerk::Client.new(bearer_token: 'bt')
       request = stub_get('/api/v1/contracts').
       to_return(
         body: fixture('contracts.json'),
@@ -59,7 +59,7 @@ describe PactasItero::Api::Customers do
 
   describe ".contract_cancellation_preview" do
     it "requests the correct resource" do
-      client = PactasItero::Client.new(bearer_token: "bt")
+      client = Billwerk::Client.new(bearer_token: "bt")
       request = stub_get("/api/v1/contracts/some_contract_id/cancellationPreview").to_return(
         body: fixture("contract_cancellation_preview_response.json"),
         headers: { content_type: "application/json; charset=utf-8" }
@@ -71,7 +71,7 @@ describe PactasItero::Api::Customers do
     end
 
     it 'returns the next possible cancellation date' do
-      client = PactasItero::Client.new(bearer_token: 'bt')
+      client = Billwerk::Client.new(bearer_token: 'bt')
       request = stub_get("/api/v1/contracts/some_contract_id/cancellationPreview").to_return(
         body: fixture("contract_cancellation_preview_response.json"),
         headers: { content_type: "application/json; charset=utf-8" }
@@ -87,7 +87,7 @@ describe PactasItero::Api::Customers do
 
   describe '.update_contract' do
     it 'requests the correct resource' do
-      client = PactasItero::Client.new(bearer_token: 'bt')
+      client = Billwerk::Client.new(bearer_token: 'bt')
       request = stub_patch('/api/v1/contracts/contract-id').
       with(body: { EndDate: '2014-05-23T13:12:47.0760000Z' }.to_json).
       to_return(
@@ -103,7 +103,7 @@ describe PactasItero::Api::Customers do
 
   describe '.contract' do
     it 'requests the correct resource' do
-      client = PactasItero::Client.new(bearer_token: 'bt')
+      client = Billwerk::Client.new(bearer_token: 'bt')
       request = stub_get('/api/v1/contracts/5357bc4f1d8dd00fa0db6c31').
       to_return(
         body: fixture('contract.json'),
@@ -118,7 +118,7 @@ describe PactasItero::Api::Customers do
 
   describe ".terminate_contract" do
     it "requests the correct resource" do
-      client = PactasItero::Client.new(bearer_token: "bt")
+      client = Billwerk::Client.new(bearer_token: "bt")
       request = stub_post("/api/v1/contracts/5922f50b81b1f007e0e4d738/end").
         with(
           body: { EndDate: "2017-10-01T14:51:29.3390000Z" }.to_json,
@@ -139,7 +139,7 @@ describe PactasItero::Api::Customers do
 
   describe ".get_self_service_token_for_contract" do
     it "requests the correct resource" do
-      client = PactasItero::Client.new(bearer_token: "bt")
+      client = Billwerk::Client.new(bearer_token: "bt")
       request = stub_get("/api/v1/contracts/5357bc4f1d8dd00fa0db6c31/SelfServiceToken").to_return(
         body: fixture("self_service_token.json"),
         headers: { content_type: "application/json; charset=utf-8" },
@@ -151,7 +151,7 @@ describe PactasItero::Api::Customers do
     end
 
     it "returns a self service token" do
-      client = PactasItero::Client.new(bearer_token: "bt")
+      client = Billwerk::Client.new(bearer_token: "bt")
       stub_get("/api/v1/contracts/5357bc4f1d8dd00fa0db6c31/SelfServiceToken").to_return(
         body: fixture("self_service_token.json"),
         headers: { content_type: "application/json; charset=utf-8" },

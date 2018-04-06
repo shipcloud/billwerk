@@ -1,18 +1,18 @@
 require 'base64'
 require 'rash'
-require 'pactas_itero/configurable'
-require 'pactas_itero/api'
+require 'billwerk/configurable'
+require 'billwerk/api'
 
-module PactasItero
+module Billwerk
   class Client
-    include PactasItero::Configurable
-    include PactasItero::Api
+    include Billwerk::Configurable
+    include Billwerk::Api
 
     attr_accessor :bearer_token
 
     def initialize(options = {})
-      PactasItero::Configurable.keys.each do |key|
-        instance_variable_set(:"@#{key}", options[key] || PactasItero.instance_variable_get(:"@#{key}"))
+      Billwerk::Configurable.keys.each do |key|
+        instance_variable_set(:"@#{key}", options[key] || Billwerk.instance_variable_get(:"@#{key}"))
       end
     end
 

@@ -1,15 +1,5 @@
 ## [UNRELEASED]
-### Added
-
-### Changed
-
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
+This gem has been renamed to billwerk and the pactas_itero gem release has been deprecated.
 
 ## [0.3.0] - 2017-09-04
 ### Added

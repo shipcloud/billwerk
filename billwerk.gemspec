@@ -1,19 +1,19 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'pactas_itero/version'
+require 'billwerk/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'pactas_itero'
-  spec.version       = PactasItero::VERSION
+  spec.name          = 'billwerk'
+  spec.version       = Billwerk::VERSION
   spec.authors       = ['Simon Fröhler']
   spec.email         = "simon@shipcloud.io"
-  spec.summary       = %q{pactas_itero provides a client mapping for accessing
-    the Pactas Itero API.}
-  spec.description   = %q{pactas_itero provides a client mapping for accessing
-    the Pactas Itero API, making it easy to post your data to, adn read your
-    data from your Pactas account.}
-  spec.homepage      = 'https://github.com/webionate/pactas_itero'
+  spec.summary       = %q{billwerk provides a client mapping for accessing
+    the Billwerk API.}
+  spec.description   = %q{billwerk provides a client mapping for accessing
+    the Billwerk API, making it easy to post your data to, adn read your
+    data from your Billwerk account.}
+  spec.homepage      = 'https://github.com/webionate/billwerk'
   spec.license       = 'MIT'
 
   spec.files = Dir["lib/**/*.rb"] + Dir["bin/*"]

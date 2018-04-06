@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/shipcloud/pactas_itero.svg)](https://travis-ci.org/shipcloud/pactas_itero)
+[![Build Status](https://travis-ci.org/shipcloud/billwerk.svg)](https://travis-ci.org/shipcloud/billwerk)
 
-# PactasItero
+# Billwerk
 
 TODO: Write a gem description
 
@@ -9,7 +9,7 @@ TODO: Write a gem description
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'pactas_itero'
+gem 'billwerk'
 ```
 
 And then execute:
@@ -18,7 +18,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install pactas_itero
+    $ gem install billwerk
 
 ## Usage
 
@@ -26,7 +26,7 @@ TODO: Write usage instructions here
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/pactas_itero/fork )
+1. Fork it ( https://github.com/[my-github-username]/billwerk/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

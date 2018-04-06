@@ -1,15 +1,15 @@
-require 'pactas_itero/client'
-require 'pactas_itero/default'
+require 'billwerk/client'
+require 'billwerk/default'
 
-module PactasItero
+module Billwerk
   class << self
-    include PactasItero::Configurable
+    include Billwerk::Configurable
 
     # API client based on configured options {Configurable}
     #
-    # @return [PactasItero::Client] API wrapper
+    # @return [Billwerk::Client] API wrapper
     def client
-      PactasItero::Client.new(options)
+      Billwerk::Client.new(options)
     end
 
     def respond_to_missing?(method_name, include_private = false)
@@ -28,4 +28,4 @@ module PactasItero
   end
 end
 
-PactasItero.setup
+Billwerk.setup

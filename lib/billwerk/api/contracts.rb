@@ -1,4 +1,4 @@
-module PactasItero
+module Billwerk
   module Api
     module Contracts
       def customer_contracts(customer_id, options = {})

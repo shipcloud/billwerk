@@ -1,4 +1,4 @@
-module PactasItero
+module Billwerk
   module Api
     module RatedItems
       def create_rated_item(contract_id, quantity, description, price_per_unit, tax_policy_id, options = {})

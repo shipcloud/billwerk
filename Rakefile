@@ -8,7 +8,7 @@ end
 task :console do
   require 'irb'
   require 'irb/completion'
-  require 'pactas_itero'
+  require 'billwerk'
   ARGV.clear
   IRB.start
 end
