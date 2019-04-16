@@ -5,6 +5,7 @@ before_install:
   gem install bundler --no-doc
 rvm:
   - ruby-head
+  - 2.6
   - 2.5
   - 2.4
   - jruby
