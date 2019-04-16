@@ -84,4 +84,32 @@ describe PactasItero::Api::Invoices do
       expect(request).to have_been_made
     end
   end
+
+  describe '.invoice_download' do
+    it "requests the correct resource" do
+      client = PactasItero::Client.new(bearer_token: 'bt')
+      request = stub_get('/api/v1/invoices/54b67d9e995ec90bc8f37718/download').
+        to_return(
+          body: fixture('invoice_download.pdf'),
+          headers: { content_type: 'application/pdf'}
+        )
+
+      client.invoice_download('54b67d9e995ec90bc8f37718')
+
+      expect(request).to have_been_made
+    end
+
+    it "returns a String" do
+      client = PactasItero::Client.new(bearer_token: 'bt')
+      request = stub_get('/api/v1/invoices/54b67d9e995ec90bc8f37718/download').
+        to_return(
+          body: fixture('invoice_download.pdf'),
+          headers: { content_type: 'application/pdf'}
+        )
+
+      response = client.invoice_download('54b67d9e995ec90bc8f37718')
+
+      expect(response.class).to be String
+    end
+  end
 end

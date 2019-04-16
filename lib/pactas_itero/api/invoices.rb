@@ -20,6 +20,11 @@ module PactasItero
         options = options.camelize_keys
         get "api/v1/invoices/#{invoice_id}", options
       end
+
+      def invoice_download(invoice_id, options = {})
+        options = options.camelize_keys
+        get "api/v1/invoices/#{invoice_id}/download", options
+      end
     end
   end
 end
