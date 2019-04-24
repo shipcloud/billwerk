@@ -200,7 +200,7 @@ describe PactasItero::Client do
     it "uses the production endpoint when production is set to true" do
       client = PactasItero::Client.new(production: true)
 
-      expect(client.api_endpoint).to eq 'https://itero.pactas.com/'
+      expect(client.api_endpoint).to eq "https://app.billwerk.com/"
     end
 
     it "sets a default user agent" do
@@ -310,7 +310,7 @@ describe PactasItero::Client do
     it 'returns url of the sandbox endpoint' do
       client = PactasItero::Client.new
 
-      expect(client.production_api_endpoint).to eq 'https://itero.pactas.com'
+      expect(client.production_api_endpoint).to eq "https://app.billwerk.com"
     end
   end
 end

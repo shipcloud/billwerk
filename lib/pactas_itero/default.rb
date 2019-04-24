@@ -9,7 +9,7 @@ module PactasItero
 
     SANDBOX_API_ENDPOINT = "https://sandbox.billwerk.com".freeze
 
-    PRODUCTION_API_ENDPOINT = "https://itero.pactas.com".freeze
+    PRODUCTION_API_ENDPOINT = "https://app.billwerk.com".freeze
 
     PRODUCTION = false
 
