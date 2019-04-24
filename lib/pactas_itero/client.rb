@@ -11,6 +11,8 @@ module PactasItero
     attr_accessor :bearer_token
 
     def initialize(options = {})
+      warn "[DEPRECATION] This gem has been renamed to billwerk and will no longer be supported. " \
+        "Please switch to the bew gem as soon as possible."
       PactasItero::Configurable.keys.each do |key|
         instance_variable_set(:"@#{key}", options[key] || PactasItero.instance_variable_get(:"@#{key}"))
       end
