@@ -11,6 +11,13 @@
 
 ### Security
 
+## [0.4.0] - 2019-04-30
+### Added
+ * download Invoices as PDF (#60)
+
+### Changed
+* new prodcution endpoint (#45)
+
 ## [0.3.0] - 2017-09-04
 ### Added
 - get a self service token for a given contract
