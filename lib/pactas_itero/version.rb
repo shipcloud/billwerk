@@ -1,3 +1,3 @@
 module PactasItero
-  VERSION = "0.5.0a".freeze
+  VERSION = "0.5.0".freeze
 end
