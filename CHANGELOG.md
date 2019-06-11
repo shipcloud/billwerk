@@ -11,6 +11,12 @@
 
 ### Security
 
+## [0.5.0] - 2019-06-11
+### Changed
+- Updates gem dependencies to latest versions (#65):
+  - replaces rash with rash_alt
+  - removes specific faraday_middleware version dependency
+
 ## [0.4.0] - 2019-04-30
 ### Added
  * download Invoices as PDF (#60)
