@@ -24,13 +24,14 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = ">= 2.0"
 
-  spec.add_dependency("faraday_middleware", ">= 0.9.1", "< 0.12")
-  spec.add_dependency("rash")
+  spec.add_dependency("faraday_middleware", "~> 0.13")
+  spec.add_dependency("rash_alt", "~> 0.4")
 
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency "rspec", '~> 3.8.0'
-  spec.add_development_dependency("rubocop", '~> 0.52.1') # check houndci compatibility before updating rubocop
+  spec.add_development_dependency("rubocop", '~> 0.68') # check houndci compatibility before updating rubocop
+  spec.add_development_dependency("rubocop-performance", "~> 1.3")
   spec.add_development_dependency("simplecov", "~> 0.16.1")
   spec.add_development_dependency("webmock", "~> 3.3")
 end
