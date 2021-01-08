@@ -24,7 +24,8 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = ">= 2.0"
 
-  spec.add_dependency("faraday_middleware")
+  spec.add_dependency("faraday", "~> 1.3.0")
+  spec.add_dependency("faraday_middleware", "~> 1.0.0")
   spec.add_dependency("rash_alt")
 
   spec.add_development_dependency 'bundler'

@@ -1,4 +1,3 @@
-require 'pactas_itero/response/raise_error'
 require 'pactas_itero/version'
 require 'faraday_middleware'
 
@@ -19,12 +18,10 @@ module PactasItero
 
     MIDDLEWARE = Faraday::RackBuilder.new do |builder|
       builder.request :json
-      builder.use PactasItero::Response::RaiseError
+      builder.response :raise_error
       builder.response :rashify
       builder.request :url_encoded
       builder.response :json, :content_type => /\bjson$/
-
-      builder.adapter Faraday.default_adapter
     end
 
     class << self

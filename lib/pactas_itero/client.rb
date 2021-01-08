@@ -70,6 +70,12 @@ module PactasItero
         |request| request.headers.update(headers)
       }.env
       response.body
+    rescue Faraday::Error => e
+      handle_error(e)
+    end
+
+    def handle_error(error)
+      raise PactasItero::Error.from_response(error, api_endpoint)
     end
 
     def connection_options

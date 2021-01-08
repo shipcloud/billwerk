@@ -1,7 +1,9 @@
 ## [UNRELEASED]
 ### Added
+- `faraday` is added as an explicit dependency and version is specified to be `~> 1.3.0`
 
 ### Changed
+- `faraday_middleware` version is specified to be `~> 1.0.0`
 
 ### Deprecated
 
@@ -22,7 +24,7 @@
  * download Invoices as PDF (#60)
 
 ### Changed
-* new prodcution endpoint (#45)
+* new production endpoint (#45)
 
 ## [0.3.0] - 2017-09-04
 ### Added

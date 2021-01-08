@@ -7,10 +7,10 @@ module PactasItero
     #
     # @param [Hash] response HTTP response
     # @return [PactasItero::Error]
-    def self.from_response(response)
-      status  = response[:status].to_i
-      body    = response[:body].to_s
-      headers = response[:response_headers]
+    def self.from_response(response, url_prefix)
+      status  = response.response_status
+      body    = response.response_body
+      headers = response.response_headers
 
       if klass =  case status
                   when 400      then PactasItero::BadRequest
@@ -28,12 +28,13 @@ module PactasItero
                   when 503      then PactasItero::ServiceUnavailable
                   when 500..599 then PactasItero::ServerError
                   end
-        klass.new(response)
+        klass.new(response, url_prefix)
       end
     end
 
-    def initialize(response=nil)
+    def initialize(response = nil, url_prefix = "")
       @response = response
+      @url_prefix = url_prefix
       super(build_error_message)
     end
 
@@ -73,17 +74,15 @@ module PactasItero
 
     def data
       @data ||=
-        if (body = @response[:body]) && !body.empty?
+        if (body = @response.response_body) && !body.empty?
           if body.is_a?(String) &&
-            @response[:response_headers] &&
-            @response[:response_headers][:content_type] =~ /json/
+              @response.response_headers &&
+              @response.response_headers[:content_type].include?("json")
 
             Sawyer::Agent.serializer.decode(body)
           else
             body
           end
-        else
-          nil
         end
     end
 
@@ -114,13 +113,16 @@ module PactasItero
     def build_error_message
       return nil if @response.nil?
 
-      message =  "#{@response[:method].to_s.upcase} "
-      message << redact_url(@response[:url].to_s) + ": "
-      message << "#{@response[:status]} - "
-      message << "#{response_message}" unless response_message.nil?
-      message << "#{response_error}" unless response_error.nil?
-      message << "#{response_error_summary}" unless response_error_summary.nil?
-      message
+      request_hash = @response.response[:request]
+      url = "#{@url_prefix[0..-2]}#{request_hash[:url_path]}"
+      [
+        request_hash[:method].upcase,
+        "#{redact_url(url)}:",
+        "#{@response.response_status} -",
+        response_message,
+        response_error,
+        response_error_summary,
+      ].compact.join(" ")
     end
 
     def redact_url(url_string)
@@ -161,7 +163,7 @@ module PactasItero
     private
 
     def delivery_method_from_header
-      if match = self.class.required_header(@response[:response_headers])
+      if match = self.class.required_header(@response.response_headers)
         match[1]
       end
     end

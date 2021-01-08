@@ -1,5 +1,6 @@
 require 'pactas_itero/client'
 require 'pactas_itero/default'
+require "pactas_itero/error"
 
 module PactasItero
   class << self
