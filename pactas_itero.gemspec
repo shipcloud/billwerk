@@ -27,11 +27,11 @@ Gem::Specification.new do |spec|
   spec.add_dependency("faraday_middleware", ">= 1.0")
   spec.add_dependency("rash_alt")
 
-  spec.add_development_dependency 'bundler'
-  spec.add_development_dependency 'rake'
-  spec.add_development_dependency "rspec", '~> 3.8.0'
-  spec.add_development_dependency("rubocop", '~> 0.68')
-  spec.add_development_dependency("rubocop-performance", "~> 1.3")
+  spec.add_development_dependency "bundler"
+  spec.add_development_dependency "rake"
+  spec.add_development_dependency "rspec", "~> 3.8.0"
+  spec.add_development_dependency("rubocop", "~> 1.8.1")
+  spec.add_development_dependency("rubocop-performance", "~> 1.7.0")
   spec.add_development_dependency("simplecov", "~> 0.16.1")
   spec.add_development_dependency("webmock", "~> 3.3")
 end
