@@ -1,13 +1,12 @@
 module PactasItero
   module Api
     module Invoices
-
       def invoices(options = {})
         options = options.camelize_keys
         get "api/v1/invoices", options
       end
 
-      def invoices_from(from_id=nil, options = {})
+      def invoices_from(from_id = nil, options = {})
         if from_id
           options = options.camelize_keys
           get "api/v1/invoices?from=#{from_id}", options

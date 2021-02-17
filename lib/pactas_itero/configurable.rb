@@ -1,11 +1,10 @@
 module PactasItero
-
   module Configurable
     attr_accessor :bearer_token, :client_id, :client_secret, :user_agent,
                   :default_media_type, :middleware, :production
     attr_writer :api_endpoint
-    class << self
 
+    class << self
       # List of configurable keys for PactasItero::Client
       def keys
         @keys ||= [
@@ -16,7 +15,7 @@ module PactasItero
           :user_agent,
           :default_media_type,
           :middleware,
-          :production
+          :production,
         ]
       end
     end
@@ -37,8 +36,8 @@ module PactasItero
 
     def api_endpoint
       endpoint = @api_endpoint ||
-       production && production_api_endpoint ||
-       sandbox_api_endpoint
+        production && production_api_endpoint ||
+        sandbox_api_endpoint
       File.join(endpoint, "")
     end
 
@@ -53,7 +52,7 @@ module PactasItero
     private
 
     def options
-      Hash[PactasItero::Configurable.keys.map{|key| [key, send(:"#{key}")]}]
+      Hash[PactasItero::Configurable.keys.map { |key| [key, send(:"#{key}")] }]
     end
   end
 end
