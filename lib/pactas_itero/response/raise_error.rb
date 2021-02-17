@@ -7,9 +7,7 @@ module PactasItero
 
     # This class raises an PactasItero-flavored exception based
     # HTTP status codes returned by the API
-    class RaiseError < Faraday::Response::Middleware
-
-      private
+    class RaiseError < Faraday::Middleware
 
       def on_complete(response)
         if error = PactasItero::Error.from_response(response)
