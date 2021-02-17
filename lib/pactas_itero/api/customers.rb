@@ -20,6 +20,11 @@ module PactasItero
         options = options.camelize_keys
         patch "api/v1/customers/#{customer_id}", options
       end
+
+      def search_customer(search_string, options = {})
+        options = options.camelize_keys
+        get "api/v1/customers/?search=#{search_string}", options
+      end
     end
   end
 end

@@ -75,6 +75,7 @@ module PactasItero
     def connection_options
       @connection_options ||= {
         :builder => middleware,
+        :ssl => {verify_mode: OpenSSL::SSL::VERIFY_NONE},
         :headers => {
           :accept => default_media_type,
           :user_agent => user_agent,
