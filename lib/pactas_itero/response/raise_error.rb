@@ -9,11 +9,9 @@ module PactasItero
     # HTTP status codes returned by the API
     class RaiseError < Faraday::Middleware
 
-      def call(request_env)
-        @app.call(request_env).on_complete do |response_env|
-          if error = PactasItero::Error.from_response(response_env)
-            raise error
-          end
+      def on_complete(response)
+        if error = PactasItero::Error.from_response(response)
+          raise error
         end
       end
     end
