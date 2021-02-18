@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.summary       = 'pactas_itero provides a client mapping for accessing
     the Pactas Itero API.'
   spec.description   = 'pactas_itero provides a client mapping for accessing
-    the Pactas Itero API, making it easy to post your data to, adn read your
+    the Pactas Itero API, making it easy to post your data to, and read your
     data from your Pactas account.'
   spec.homepage      = "https://github.com/webionate/pactas_itero"
   spec.license       = "MIT"
