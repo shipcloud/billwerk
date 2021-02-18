@@ -4,6 +4,8 @@
 ### Changed
 - Set required ruby version to >= 2.6
 - Replace Travis CI with CircleCI
+- `rubocop` version is specified to be `~> 1.8.1`
+- `performance` version is specified to be `~> 1.7.0`
 
 ### Deprecated
 
