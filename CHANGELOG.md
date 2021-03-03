@@ -2,7 +2,6 @@
 ### Added
 
 ### Changed
-- `faraday_middleware` version is specified to be `>= 1.0.0`
 
 ### Deprecated
 
@@ -11,6 +10,10 @@
 ### Fixed
 
 ### Security
+
+## [0.6.0] - 2021-03-03
+### Changed
+- `faraday_middleware` version is specified to be `>= 1.0.0`
 
 ## [0.5.0] - 2019-06-11
 ### Changed
