@@ -2,10 +2,13 @@
 ### Added
 
 ### Changed
+- Set required ruby version to >= 2.6
+- Replace Travis CI with CircleCI
 
 ### Deprecated
 
 ### Removed
+- Drop support for Ruby <= 2.5
 
 ### Fixed
 

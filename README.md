@@ -1,4 +1,6 @@
-[![Build Status](https://travis-ci.org/shipcloud/pactas_itero.svg)](https://travis-ci.org/shipcloud/pactas_itero)
+[![CircleCI](https://circleci.com/gh/shipcloud/billwerk/tree/master.svg?style=svg)](https://circleci.com/gh/shipcloud/billwerk/tree/master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/cfbdd07da1f178c7fa9a/maintainability)](https://codeclimate.com/github/shipcloud/billwerk/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/cfbdd07da1f178c7fa9a/test_coverage)](https://codeclimate.com/github/shipcloud/billwerk/test_coverage)
 
 # PactasItero
 

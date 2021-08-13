@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^bin/}).map { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.required_ruby_version = ">= 2.0"
+  spec.required_ruby_version = ">= 2.6"
 
   spec.add_dependency("faraday_middleware", ">= 1.0")
   spec.add_dependency("rash_alt")
@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency "rspec", '~> 3.8.0'
-  spec.add_development_dependency("rubocop", '~> 0.68') # check houndci compatibility before updating rubocop
+  spec.add_development_dependency("rubocop", '~> 0.68')
   spec.add_development_dependency("rubocop-performance", "~> 1.3")
   spec.add_development_dependency("simplecov", "~> 0.16.1")
   spec.add_development_dependency("webmock", "~> 3.3")
