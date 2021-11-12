@@ -57,6 +57,5 @@ workflows:
                 - "ruby:2.7"
                 - "ruby:3.0"
                 - "ruby:latest"
-                - "jruby:latest"
               check-code-quality:
                 - false

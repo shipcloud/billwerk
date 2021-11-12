@@ -9,6 +9,7 @@
 
 ### Removed
 - Drop support for Ruby <= 2.5
+- Drop support for JRuby
 
 ### Fixed
 
