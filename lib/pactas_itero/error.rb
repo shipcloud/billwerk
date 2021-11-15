@@ -1,7 +1,6 @@
 module PactasItero
   # Custom error class for rescuing from all Pactas errors
   class Error < StandardError
-
     # Returns the appropriate PactasItero::Error sublcass based
     # on status and response message
     #
@@ -32,7 +31,7 @@ module PactasItero
       end
     end
 
-    def initialize(response=nil)
+    def initialize(response = nil)
       @response = response
       super(build_error_message)
     end
@@ -50,9 +49,9 @@ module PactasItero
     # Returns most appropriate error for 403 HTTP status code
     # @private
     def self.error_for_403(body)
-      if body =~ /rate limit exceeded/i
+      if /rate limit exceeded/i.match?(body)
         PactasItero::TooManyRequests
-      elsif body =~ /login attempts exceeded/i
+      elsif /login attempts exceeded/i.match?(body)
         PactasItero::TooManyLoginAttempts
       else
         PactasItero::Forbidden
@@ -75,15 +74,13 @@ module PactasItero
       @data ||=
         if (body = @response[:body]) && !body.empty?
           if body.is_a?(String) &&
-            @response[:response_headers] &&
-            @response[:response_headers][:content_type] =~ /json/
+              @response[:response_headers] &&
+              @response[:response_headers][:content_type] =~ /json/
 
             Sawyer::Agent.serializer.decode(body)
           else
             body
           end
-        else
-          nil
         end
     end
 
@@ -105,7 +102,7 @@ module PactasItero
 
       summary = "\nError summary:\n"
       summary << data[:errors].map do |hash|
-        hash.map { |k,v| "  #{k}: #{v}" }
+        hash.map { |k, v| "  #{k}: #{v}" }
       end.join("\n")
 
       summary
@@ -117,9 +114,9 @@ module PactasItero
       message =  "#{@response[:method].to_s.upcase} "
       message << redact_url(@response[:url].to_s) + ": "
       message << "#{@response[:status]} - "
-      message << "#{response_message}" unless response_message.nil?
-      message << "#{response_error}" unless response_error.nil?
-      message << "#{response_error_summary}" unless response_error_summary.nil?
+      message << response_message.to_s unless response_message.nil?
+      message << response_error.to_s unless response_error.nil?
+      message << response_error_summary.to_s unless response_error_summary.nil?
       message
     end
 
@@ -143,12 +140,12 @@ module PactasItero
   # Raised when Pactas returns a 401 HTTP status code
   # and headers include "X-Pactas-OTP"
   class OneTimePasswordRequired < ClientError
-    #@private
+    # @private
     OTP_DELIVERY_PATTERN = /required; (\w+)/i
 
-    #@private
+    # @private
     def self.required_header(headers)
-      OTP_DELIVERY_PATTERN.match headers['X-Pactas-OTP'].to_s
+      OTP_DELIVERY_PATTERN.match headers["X-Pactas-OTP"].to_s
     end
 
     # Delivery method for the user's OTP

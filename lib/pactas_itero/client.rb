@@ -1,7 +1,7 @@
-require 'base64'
-require 'rash'
-require 'pactas_itero/configurable'
-require 'pactas_itero/api'
+require "base64"
+require "rash"
+require "pactas_itero/configurable"
+require "pactas_itero/api"
 
 module PactasItero
   class Client
@@ -12,7 +12,10 @@ module PactasItero
 
     def initialize(options = {})
       PactasItero::Configurable.keys.each do |key|
-        instance_variable_set(:"@#{key}", options[key] || PactasItero.instance_variable_get(:"@#{key}"))
+        instance_variable_set(
+          :"@#{key}",
+          options[key] || PactasItero.instance_variable_get(:"@#{key}"),
+        )
       end
     end
 
@@ -59,29 +62,29 @@ module PactasItero
       bearer_token_request = params.delete(:bearer_token_request)
 
       if bearer_token_request
-        headers[:accept]        = '*/*'
+        headers[:accept]        = "*/*"
         headers[:authorization] = bearer_token_credentials_auth_header
-        headers[:content_type]  = 'application/x-www-form-urlencoded; charset=UTF-8'
+        headers[:content_type]  = "application/x-www-form-urlencoded; charset=UTF-8"
       else
         headers[:authorization] = auth_header
       end
 
-      response = connection.send(method.to_sym, path, params) {
-        |request| request.headers.update(headers)
-      }.env
+      response = connection.send(method.to_sym, path, params) do |request|
+        request.headers.update(headers)
+      end.env
       response.body
     end
 
     def connection_options
       @connection_options ||= {
-        :builder => middleware,
-        :headers => {
-          :accept => default_media_type,
-          :user_agent => user_agent,
+        builder: middleware,
+        headers: {
+          accept: default_media_type,
+          user_agent: user_agent,
         },
-        :request => {
-          :open_timeout => 10,
-          :timeout => 30,
+        request: {
+          open_timeout: 10,
+          timeout: 30,
         },
       }
     end
@@ -92,11 +95,12 @@ module PactasItero
     end
 
     def bearer_auth_header
-      token = if bearer_token.respond_to?(:access_token)
-        bearer_token.access_token
-      else
-        bearer_token
-      end
+      token =
+        if bearer_token.respond_to?(:access_token)
+          bearer_token.access_token
+        else
+          bearer_token
+        end
       "Bearer #{token}"
     end
 
