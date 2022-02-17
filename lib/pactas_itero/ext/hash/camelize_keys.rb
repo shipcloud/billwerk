@@ -1,10 +1,11 @@
+# frozen_string_literal: true
 class Hash
   def camelize_keys(value = self)
     case value
     when Array
       value.map { |v| camelize_keys(v) }
     when Hash
-      Hash[value.map { |k, v| [camelize_key(k), camelize_keys(v)] }]
+      value.to_h { |k, v| [camelize_key(k), camelize_keys(v)] }
     else
       value
     end
@@ -13,9 +14,10 @@ class Hash
   private
 
   def camelize_key(key)
-    if key.is_a? Symbol
+    case key
+    when Symbol
       camelize(key.to_s).to_sym
-    elsif key.is_a? String
+    when String
       camelize(key)
     else
       key

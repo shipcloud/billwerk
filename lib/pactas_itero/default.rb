@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require "pactas_itero/response/raise_error"
 require "pactas_itero/version"
 require "faraday_middleware"
@@ -5,13 +6,13 @@ require "faraday_middleware"
 module PactasItero
   # Default configuration options for {Client}
   module Default
-    SANDBOX_API_ENDPOINT = "https://sandbox.billwerk.com".freeze
+    SANDBOX_API_ENDPOINT = "https://sandbox.billwerk.com"
 
-    PRODUCTION_API_ENDPOINT = "https://app.billwerk.com".freeze
+    PRODUCTION_API_ENDPOINT = "https://app.billwerk.com"
 
     PRODUCTION = false
 
-    USER_AGENT   = "Pactas.Itero Ruby Gem #{PactasItero::VERSION}".freeze
+    USER_AGENT   = "Pactas.Itero Ruby Gem #{PactasItero::VERSION}"
 
     MEDIA_TYPE   = "application/json"
 
@@ -27,7 +28,7 @@ module PactasItero
 
     class << self
       def options
-        Hash[PactasItero::Configurable.keys.map { |key| [key, send(key)] }]
+        PactasItero::Configurable.keys.to_h { |key| [key, send(key)] }
       end
 
       def api_endpoint

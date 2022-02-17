@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require "spec_helper"
 require "json"
 
@@ -230,7 +231,7 @@ describe PactasItero::Client do
     end
 
     it "creates the correct auth headers with supplied bearer_token" do
-      token = OpenStruct.new(access_token: "the_bearer_token")
+      token = OpenStruct.new(access_token: "the_bearer_token") # rubocop:disable Style/OpenStructUse
       client = PactasItero::Client.new(bearer_token: token)
 
       request = stub_get("/").with(headers: { authorization: "Bearer #{token.access_token}" })
@@ -261,13 +262,15 @@ describe PactasItero::Client do
       stub_get("/with_message").to_return(
         status: 422,
         headers: { content_type: "application/json" },
-        body: { Message: "'Something' is not a valid ObjectId. Expected a 24 digit hex string." }.to_json,
+        body: {
+          Message: "'Something' is not a valid ObjectId. Expected a 24 digit hex string.",
+        }.to_json,
       )
 
       expect { client.get("/with_message") }.to raise_error(
         PactasItero::UnprocessableEntity,
         "GET https://sandbox.billwerk.com/with_message: " \
-          "422 - 'Something' is not a valid ObjectId. Expected a 24 digit hex string.",
+        "422 - 'Something' is not a valid ObjectId. Expected a 24 digit hex string.",
       )
     end
 

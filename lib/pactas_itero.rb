@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require "pactas_itero/client"
 require "pactas_itero/default"
 
@@ -13,7 +14,7 @@ module PactasItero
     end
 
     def respond_to_missing?(method_name, include_private = false)
-      method_name != :client && client.respond_to?(method_name, include_private) || super
+      (method_name != :client && client.respond_to?(method_name, include_private)) || super
     end
 
     private

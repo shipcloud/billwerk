@@ -1,8 +1,10 @@
 # coding: utf-8
+# frozen_string_literal: true
 lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "pactas_itero/version"
 
+# rubocop:disable Metrics/BlockLength
 Gem::Specification.new do |spec|
   spec.name          = "pactas_itero"
   spec.version       = PactasItero::VERSION
@@ -32,6 +34,10 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "~> 3.11.0"
   spec.add_development_dependency("rubocop", "~> 1.25.1")
   spec.add_development_dependency("rubocop-performance", "~> 1.13.2")
+  spec.add_development_dependency("rubocop-rake")
+  spec.add_development_dependency("rubocop-rspec")
   spec.add_development_dependency("simplecov", "~> 0.16.1")
   spec.add_development_dependency("webmock", "~> 3.3")
+  spec.metadata["rubygems_mfa_required"] = "true"
 end
+# rubocop:enable Metrics/BlockLength

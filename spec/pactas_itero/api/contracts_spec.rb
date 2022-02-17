@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require "spec_helper"
 
 describe PactasItero::Api::Customers do
@@ -17,7 +18,7 @@ describe PactasItero::Api::Customers do
 
     it "returns an array of contracts" do
       client = PactasItero::Client.new(bearer_token: "bt")
-      request = stub_get("/api/v1/customers/535783241d8dd00fa0db6b2a/contracts").
+      stub_get("/api/v1/customers/535783241d8dd00fa0db6b2a/contracts").
         to_return(
           body: fixture("contracts.json"),
           headers: { content_type: "application/json; charset=utf-8" },
@@ -45,7 +46,7 @@ describe PactasItero::Api::Customers do
 
     it "returns an array of contracts" do
       client = PactasItero::Client.new(bearer_token: "bt")
-      request = stub_get("/api/v1/contracts").
+      stub_get("/api/v1/contracts").
         to_return(
           body: fixture("contracts.json"),
           headers: { content_type: "application/json; charset=utf-8" },
@@ -72,7 +73,7 @@ describe PactasItero::Api::Customers do
 
     it "returns the next possible cancellation date" do
       client = PactasItero::Client.new(bearer_token: "bt")
-      request = stub_get("/api/v1/contracts/some_contract_id/cancellationPreview").to_return(
+      stub_get("/api/v1/contracts/some_contract_id/cancellationPreview").to_return(
         body: fixture("contract_cancellation_preview_response.json"),
         headers: { content_type: "application/json; charset=utf-8" },
       )

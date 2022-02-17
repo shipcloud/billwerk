@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require "base64"
 require "rash"
 require "pactas_itero/configurable"
@@ -10,7 +11,7 @@ module PactasItero
 
     attr_accessor :bearer_token
 
-    def initialize(options = {})
+    def initialize(options = {}) # rubocop:disable Style/OptionHash
       PactasItero::Configurable.keys.each do |key|
         instance_variable_set(
           :"@#{key}",
@@ -19,27 +20,27 @@ module PactasItero
       end
     end
 
-    def get(url, options = {})
+    def get(url, options = {}) # rubocop:disable Style/OptionHash
       request :get, url, options
     end
 
-    def post(url, options = {})
+    def post(url, options = {}) # rubocop:disable Style/OptionHash
       request :post, url, options
     end
 
-    def put(url, options = {})
+    def put(url, options = {}) # rubocop:disable Style/OptionHash
       request :put, url, options
     end
 
-    def patch(url, options = {})
+    def patch(url, options = {}) # rubocop:disable Style/OptionHash
       request :patch, url, options
     end
 
-    def delete(url, options = {})
+    def delete(url, options = {}) # rubocop:disable Style/OptionHash
       request :delete, url, options
     end
 
-    def head(url, options = {})
+    def head(url, options = {}) # rubocop:disable Style/OptionHash
       request :head, url, options
     end
 
@@ -50,10 +51,10 @@ module PactasItero
     private
 
     def connection
-      @connection ||= Faraday.new(api_endpoint, connection_options)
+      @_connection ||= Faraday.new(api_endpoint, connection_options)
     end
 
-    def request(method, path, params = {})
+    def request(method, path, params = {}) # rubocop:disable Style/OptionHash
       headers = params.delete(:headers) || {}
       if accept = params.delete(:accept)
         headers[:accept] = accept
@@ -76,7 +77,7 @@ module PactasItero
     end
 
     def connection_options
-      @connection_options ||= {
+      @_connection_options ||= {
         builder: middleware,
         headers: {
           accept: default_media_type,

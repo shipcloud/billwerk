@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require "simplecov"
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
@@ -48,7 +49,7 @@ def fixture_path
 end
 
 def fixture(file)
-  File.new(fixture_path + "/" + file)
+  File.new("#{fixture_path}/#{file}")
 end
 
 def pactas_api_endpoint

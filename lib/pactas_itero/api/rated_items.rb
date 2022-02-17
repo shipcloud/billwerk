@@ -1,7 +1,15 @@
+# frozen_string_literal: true
 module PactasItero
   module Api
     module RatedItems
-      def create_rated_item(contract_id, quantity, description, price_per_unit, tax_policy_id, options = {})
+      def create_rated_item(
+        contract_id,
+        quantity,
+        description,
+        price_per_unit,
+        tax_policy_id,
+        options = {} # rubocop:disable Style/OptionHash
+      )
         options.merge!(
           quantity: quantity,
           description: description,
