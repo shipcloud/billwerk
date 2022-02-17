@@ -113,21 +113,22 @@ module PactasItero
     def build_error_message
       return nil if @response.nil?
 
-      message =  "#{@response[:method].to_s.upcase} "
-      message << ("#{redact_url(@response[:url].to_s)}: ")
-      message << "#{@response[:status]} - "
-      message << response_message.to_s unless response_message.nil?
-      message << response_error.to_s unless response_error.nil?
-      message << response_error_summary.to_s unless response_error_summary.nil?
-      message
+      [
+        "#{@response[:method].to_s.upcase} ",
+        "#{redact_url(@response[:url].to_s)}: ",
+        "#{@response[:status]} - ",
+        (response_message.to_s unless response_message.nil?),
+        (response_error.to_s unless response_error.nil?),
+        (response_error_summary.to_s unless response_error_summary.nil?),
+      ].compact.join
     end
 
     def redact_url(url_string)
-      url = url_string.dup
       %w[client_secret access_token].each do |token|
-        url.gsub!(/#{token}=\S+/, "#{token}=(redacted)") if url.include? token
+        url_string.gsub!(/#{token}=\S+/, "#{token}=(redacted)") if url_string.include? token
       end
-      url
+
+      url_string
     end
   end
 
