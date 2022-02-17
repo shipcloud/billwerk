@@ -123,10 +123,11 @@ module PactasItero
     end
 
     def redact_url(url_string)
+      url = url_string.dup
       %w[client_secret access_token].each do |token|
-        url_string.gsub!(/#{token}=\S+/, "#{token}=(redacted)") if url_string.include? token
+        url.gsub!(/#{token}=\S+/, "#{token}=(redacted)") if url.include? token
       end
-      url_string
+      url
     end
   end
 
