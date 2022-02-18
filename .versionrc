@@ -1,0 +1,27 @@
+{
+  "skip": {
+    "commit": true,
+    "tag": true
+  },
+  "types": [
+    {
+      "type": "feat",
+      "section": "Added"
+    }, {
+      "type": "fix",
+      "section": "Fixed"
+    }, {
+      "type": "change",
+      "section": "Changed"
+    }, {
+      "type": "deprecate",
+      "section": "Deprecated"
+    }, {
+      "type": "remove",
+      "section": "Removed"
+    }, {
+      "type": "security",
+      "section": "Security"
+    }
+  ]
+}

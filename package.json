@@ -1,0 +1,13 @@
+{
+  "name": "billwerk",
+  "version": "0.6.1",
+  "description": "Billwerk provides a client mapping for accessing the Pactas Itero API, making it easy to post your data to, and read your data from your Pactas account.",
+  "main": "index.js",
+  "repository": "https://github.com/shipcloud/billwerk.git",
+  "author": "Marten Klitzke <m.klitzke@shipcloud.io>",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "standard-version": "^9.3.2"
+  }
+}
