@@ -513,16 +513,6 @@ Style/OneLineConditional:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#ternary-operator'
   Enabled: false
 
-Style/OptionHash:
-  Description: Don\'t use option hashes when you can use keyword arguments.
-  SuspiciousParamNames:
-    - options
-    - opts
-    - args
-    - params
-    - parameters
-  Enabled: true
-
 Style/PercentLiteralDelimiters:
   Description: 'Use `%`-literal delimiters consistently'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#percent-literal-braces'
@@ -716,6 +706,8 @@ Performance/UnfreezeString:
   Description: 'Use unary plus to get an unfrozen string literal.'
   Enabled: false
 
+# rubocop-rspec
+
 RSpec/ContextWording:
   Description: Checks that `context` docstring starts with an allowed prefix.
   Enabled: false
@@ -769,4 +761,5 @@ RSpec/Capybara/FeatureMethods:
   Enabled: false
 
 RSpec/InstanceVariable:
+  Description: Checks for instance variable usage in specs.
   Enabled: false

@@ -2,7 +2,7 @@
 module PactasItero
   module Api
     module OAuth
-      def token(options = {}) # rubocop:disable Style/OptionHash
+      def token(options = {})
         options[:bearer_token_request] = true
         options[:grant_type] ||= "client_credentials"
         post "/oauth/token", options

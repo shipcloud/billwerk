@@ -8,7 +8,7 @@ module PactasItero
         description,
         price_per_unit,
         tax_policy_id,
-        options = {} # rubocop:disable Style/OptionHash
+        options = {}
       )
         options.merge!(
           quantity: quantity,

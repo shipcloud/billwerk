@@ -11,7 +11,7 @@ module PactasItero
 
     attr_accessor :bearer_token
 
-    def initialize(options = {}) # rubocop:disable Style/OptionHash
+    def initialize(options = {})
       PactasItero::Configurable.keys.each do |key|
         instance_variable_set(
           :"@#{key}",
@@ -20,27 +20,27 @@ module PactasItero
       end
     end
 
-    def get(url, options = {}) # rubocop:disable Style/OptionHash
+    def get(url, options = {})
       request :get, url, options
     end
 
-    def post(url, options = {}) # rubocop:disable Style/OptionHash
+    def post(url, options = {})
       request :post, url, options
     end
 
-    def put(url, options = {}) # rubocop:disable Style/OptionHash
+    def put(url, options = {})
       request :put, url, options
     end
 
-    def patch(url, options = {}) # rubocop:disable Style/OptionHash
+    def patch(url, options = {})
       request :patch, url, options
     end
 
-    def delete(url, options = {}) # rubocop:disable Style/OptionHash
+    def delete(url, options = {})
       request :delete, url, options
     end
 
-    def head(url, options = {}) # rubocop:disable Style/OptionHash
+    def head(url, options = {})
       request :head, url, options
     end
 
@@ -54,7 +54,7 @@ module PactasItero
       @_connection ||= Faraday.new(api_endpoint, connection_options)
     end
 
-    def request(method, path, params = {}) # rubocop:disable Style/OptionHash
+    def request(method, path, params = {})
       headers = params.delete(:headers) || {}
       if accept = params.delete(:accept)
         headers[:accept] = accept
