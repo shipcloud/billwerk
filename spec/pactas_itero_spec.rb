@@ -4,8 +4,9 @@ require "spec_helper"
 describe PactasItero do
   it "sets defaults" do
     PactasItero::Configurable.keys.each do |key|
-      expect(described_class.instance_variable_get(:"@#{key}")).to
-      eq(PactasItero::Default.send(key))
+      expect(described_class.instance_variable_get(:"@#{key}")).to(
+        eq(PactasItero::Default.send(key)),
+      )
     end
   end
 
