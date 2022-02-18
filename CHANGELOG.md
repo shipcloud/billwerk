@@ -1,5 +1,6 @@
 ## [UNRELEASED]
 ### Added
+- get contract_changes
 
 ### Changed
 - Set required ruby version to >= 2.6

@@ -1,0 +1,22 @@
+[
+  {
+    "id": "620a22082b2290ae0d175bfa",
+    "type": "Upgrade",
+    "timestamp": "2022-02-14T08:34:00.0938297Z",
+    "orderId": "620a22082b2290ae0d175bfc",
+    "contractId": "620a22082b2290ae0d175bf8",
+    "changeDate": "2022-03-14T09:34:00.0938301Z",
+    "newPlanVariantId": "620a22082b2290ae0d175bfb",
+    "newPlanId": "620a22082b2290ae0d175bf9"
+  },
+  {
+    "id": "620a22082b2290ae0d175bfd",
+    "type": "Signup",
+    "timestamp": "2022-02-13T09:34:00.0938319Z",
+    "orderId": "620a22082b2290ae0d175bff",
+    "contractId": "620a22082b2290ae0d175bf8",
+    "changeDate": "2022-02-14T09:34:00.0938319Z",
+    "newPlanVariantId": "620a22082b2290ae0d175bfe",
+    "newPlanId": "620a22082b2290ae0d175bf9"
+  }
+]
