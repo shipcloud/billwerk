@@ -50,7 +50,7 @@ module PactasItero
     private
 
     def connection
-      @connection ||= Faraday.new(api_endpoint, connection_options)
+      @connection ||= Faraday.new({ url: api_endpoint, **connection_options })
     end
 
     def request(method, path, params = {})
