@@ -1,12 +1,10 @@
-require 'pactas_itero/response/raise_error'
-require 'pactas_itero/version'
-require 'faraday_middleware'
+require "pactas_itero/response/raise_error"
+require "pactas_itero/version"
+require "faraday_middleware"
 
 module PactasItero
-
   # Default configuration options for {Client}
   module Default
-
     SANDBOX_API_ENDPOINT = "https://sandbox.billwerk.com".freeze
 
     PRODUCTION_API_ENDPOINT = "https://app.billwerk.com".freeze
@@ -22,19 +20,18 @@ module PactasItero
       builder.use PactasItero::Response::RaiseError
       builder.response :rashify
       builder.request :url_encoded
-      builder.response :json, :content_type => /\bjson$/
+      builder.response :json, content_type: /\bjson$/
 
       builder.adapter Faraday.default_adapter
     end
 
     class << self
-
       def options
-        Hash[PactasItero::Configurable.keys.map{|key| [key, send(key)]}]
+        Hash[PactasItero::Configurable.keys.map { |key| [key, send(key)] }]
       end
 
       def api_endpoint
-        ENV['PACTAS_ITERO_ENDPOINT']
+        ENV["PACTAS_ITERO_ENDPOINT"]
       end
 
       def sandbox_api_endpoint
@@ -50,19 +47,19 @@ module PactasItero
       end
 
       def client_id
-        ENV['PACTAS_ITERO_CLIENT_ID']
+        ENV["PACTAS_ITERO_CLIENT_ID"]
       end
 
       def client_secret
-        ENV['PACTAS_ITERO_CLIENT_SECRET']
+        ENV["PACTAS_ITERO_CLIENT_SECRET"]
       end
 
       def bearer_token
-        ENV['PACTAS_ITERO_BEARER_TOKEN']
+        ENV["PACTAS_ITERO_BEARER_TOKEN"]
       end
 
       def default_media_type
-        ENV['PACTAS_ITERO_CLIENT_DEFAULT_MEDIA_TYPE'] || MEDIA_TYPE
+        ENV["PACTAS_ITERO_CLIENT_DEFAULT_MEDIA_TYPE"] || MEDIA_TYPE
       end
 
       def middleware
@@ -70,7 +67,7 @@ module PactasItero
       end
 
       def user_agent
-        ENV['PACTAS_ITERO_USER_AGENT'] || USER_AGENT
+        ENV["PACTAS_ITERO_USER_AGENT"] || USER_AGENT
       end
     end
   end

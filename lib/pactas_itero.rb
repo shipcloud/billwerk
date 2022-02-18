@@ -1,5 +1,5 @@
-require 'pactas_itero/client'
-require 'pactas_itero/default'
+require "pactas_itero/client"
+require "pactas_itero/default"
 
 module PactasItero
   class << self

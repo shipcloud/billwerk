@@ -1,20 +1,20 @@
-require 'simplecov'
+require "simplecov"
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
   SimpleCov::Formatter::HTMLFormatter,
 )
 
 SimpleCov.start do
-  add_filter '/spec/'
-  add_filter '/vendor/bundle'
-  #minimum_coverage(99.15)
+  add_filter "/spec/"
+  add_filter "/vendor/bundle"
+  # minimum_coverage(99.15)
   refuse_coverage_drop
 end
 
-require 'json'
-require 'pactas_itero'
-require 'rspec'
-require 'webmock/rspec'
+require "json"
+require "pactas_itero"
+require "rspec"
+require "webmock/rspec"
 
 WebMock.disable_net_connect!
 
@@ -35,7 +35,7 @@ RSpec.configure do |config|
     /bin\//,
     /vendor\/bundle\/(.*)\/gems\//,
     /spec\/spec_helper.rb/,
-    /lib\/rspec\/(core|expectations|matchers|mocks)/
+    /lib\/rspec\/(core|expectations|matchers|mocks)/,
   ]
 
   config.after(:each) do
@@ -44,11 +44,11 @@ RSpec.configure do |config|
 end
 
 def fixture_path
-  File.expand_path('../fixtures', __FILE__)
+  File.expand_path("fixtures", __dir__)
 end
 
 def fixture(file)
-  File.new(fixture_path + '/' + file)
+  File.new(fixture_path + "/" + file)
 end
 
 def pactas_api_endpoint
@@ -56,7 +56,7 @@ def pactas_api_endpoint
 end
 
 def pactas_api_url(url)
-  url =~ /^http/ ? url : "#{pactas_api_endpoint}#{url}"
+  /^http/.match?(url) ? url : "#{pactas_api_endpoint}#{url}"
 end
 
 def a_delete(path)
