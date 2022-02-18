@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 require "spec_helper"
 
+# rubocop:disable RSpec/FilePath
 describe PactasItero::Api::OAuth do
   describe "#token" do
     it "requests the correct resource" do
@@ -43,3 +44,4 @@ describe PactasItero::Api::OAuth do
     end
   end
 end
+# rubocop:enable RSpec/FilePath

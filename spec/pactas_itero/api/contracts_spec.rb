@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require "spec_helper"
 
-describe PactasItero::Api::Customers do
+describe PactasItero::Api::Contracts do
   describe ".customer_contracts" do
     it "requests the correct resource" do
       client = PactasItero::Client.new(bearer_token: "bt")

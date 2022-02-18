@@ -39,7 +39,7 @@ RSpec.configure do |config|
     /lib\/rspec\/(core|expectations|matchers|mocks)/,
   ]
 
-  config.after(:each) do
+  config.after do
     PactasItero.reset!
   end
 end

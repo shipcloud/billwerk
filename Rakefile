@@ -6,6 +6,7 @@ RSpec::Core::RakeTask.new(:spec) do |spec|
   spec.pattern = FileList["spec/**/*_spec.rb"]
 end
 
+desc "start an irb console with pactas_itero required"
 task :console do
   require "irb"
   require "irb/completion"
