@@ -40,3 +40,8 @@ Gemfile.lock
 
 .tags
 .tags1
+
+/node_modules
+yarn-error.log
+yarn-debug.log*
+.yarn-integrity

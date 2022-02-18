@@ -28,10 +28,13 @@ Gem::Specification.new do |spec|
   spec.add_dependency("rash_alt")
 
   spec.add_development_dependency "bundler"
+  spec.add_development_dependency("git")
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec", "~> 3.11.0"
   spec.add_development_dependency("rubocop", "~> 1.25.1")
   spec.add_development_dependency("rubocop-performance", "~> 1.13.2")
   spec.add_development_dependency("simplecov", "~> 0.16.1")
+  spec.add_development_dependency("thor")
   spec.add_development_dependency("webmock", "~> 3.3")
+  spec.metadata["rubygems_mfa_required"] = "true"
 end
