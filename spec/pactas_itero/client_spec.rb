@@ -231,7 +231,7 @@ describe PactasItero::Client do
     end
 
     it "creates the correct auth headers with supplied bearer_token as Object" do
-      token = Struct.new(:accses_token).new(access_token: "the_bearer_token")
+      token = Struct.new(:access_token).new(access_token: "the_bearer_token")
       client = described_class.new(bearer_token: token)
 
       request = stub_get("/").with(headers: { authorization: "Bearer #{token.access_token}" })
