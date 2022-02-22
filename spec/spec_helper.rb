@@ -49,7 +49,7 @@ def fixture_path
 end
 
 def fixture(file)
-  File.new("#{fixture_path}/#{file}")
+  File.new(File.join(fixture_path, file))
 end
 
 def pactas_api_endpoint
