@@ -30,6 +30,34 @@ describe PactasItero::Api::Contracts do
     end
   end
 
+  describe ".contract_changes" do
+    it "requests the correct resource" do
+      client = PactasItero::Client.new(bearer_token: "bt")
+      request = stub_get("/api/v1/contractChanges?contractId=5357bc4f1d8dd00fa0db6c31").
+        to_return(
+          body: fixture("contract_changes.json"),
+          headers: { content_type: "application/json; charset=utf-8" },
+        )
+
+      client.contract_changes("5357bc4f1d8dd00fa0db6c31")
+
+      expect(request).to have_been_made
+    end
+
+    it "returns an array of contract changes" do
+      client = PactasItero::Client.new(bearer_token: "bt")
+      stub_get("/api/v1/contractChanges?contractId=5357bc4f1d8dd00fa0db6c31").
+        to_return(
+          body: fixture("contract_changes.json"),
+          headers: { content_type: "application/json; charset=utf-8" },
+        )
+
+      contract_changes = client.contract_changes("5357bc4f1d8dd00fa0db6c31")
+
+      expect(contract_changes).to be_a Array
+    end
+  end
+
   describe ".contracts" do
     it "requests the correct resource" do
       client = PactasItero::Client.new(bearer_token: "bt")
