@@ -12,7 +12,7 @@ jobs:
           name: Install ruby dependencies
           command: gem update --system; bin/setup
       - run:
-          name: Execute specs
+          name: Run Rubocop
           command: bundle exec rubocop
   build:
     parameters:
