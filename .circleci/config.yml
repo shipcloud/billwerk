@@ -1,5 +1,19 @@
 version: 2.1
 jobs:
+  rubocop:
+    docker:
+      - image: circleci/ruby:2.6
+        environment:
+          LANG: en_US.UTF-8
+          BUNDLE_DISABLE_VERSION_CHECK: 1
+    steps:
+      - checkout
+      - run:
+          name: Install ruby dependencies
+          command: gem update --system; bin/setup
+      - run:
+          name: Run Rubocop
+          command: bundle exec rubocop
   build:
     parameters:
       image-tag:
@@ -43,6 +57,7 @@ jobs:
 workflows:
   build:
     jobs:
+      - rubocop
       - build:
           matrix:
             parameters:

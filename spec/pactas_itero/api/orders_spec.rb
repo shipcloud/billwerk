@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require "spec_helper"
 
 describe PactasItero::Api::Orders do
@@ -35,7 +36,7 @@ describe PactasItero::Api::Orders do
           PlanVariantId: "525bf9089e40073a58590fd5",
         },
       }.to_json
-      request = stub_post("/api/v1/orders").
+      stub_post("/api/v1/orders").
         with(body: post_data).
         to_return(
           body: fixture("create_order_response.json"),
@@ -86,7 +87,7 @@ describe PactasItero::Api::Orders do
 
     it "returns the updated contract" do
       client = PactasItero::Client.new(bearer_token: "bt")
-      request = stub_post("/api/v1/orders/537dfcab9e400760b4cd6347/commit").
+      stub_post("/api/v1/orders/537dfcab9e400760b4cd6347/commit").
         with(body: {}.to_json).
         to_return(
           body: fixture("commit_order_response.json"),

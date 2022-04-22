@@ -1,4 +1,7 @@
-require: rubocop-performance
+require:
+  - rubocop-performance
+  - rubocop-rake
+  - rubocop-rspec
 
 AllCops:
   TargetRubyVersion: 2.6
@@ -510,16 +513,6 @@ Style/OneLineConditional:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#ternary-operator'
   Enabled: false
 
-Style/OptionHash:
-  Description: Don\'t use option hashes when you can use keyword arguments.
-  SuspiciousParamNames:
-    - options
-    - opts
-    - args
-    - params
-    - parameters
-  Enabled: true
-
 Style/PercentLiteralDelimiters:
   Description: 'Use `%`-literal delimiters consistently'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#percent-literal-braces'
@@ -711,4 +704,62 @@ Performance/StringReplacement:
 
 Performance/UnfreezeString:
   Description: 'Use unary plus to get an unfrozen string literal.'
+  Enabled: false
+
+# rubocop-rspec
+
+RSpec/ContextWording:
+  Description: Checks that `context` docstring starts with an allowed prefix.
+  Enabled: false
+
+RSpec/DescribeClass:
+  Enabled: true
+  Description: Check that the first argument to the top level describe is a constant.
+  Exclude:
+    - !ruby/regexp /spec\/config(\/.*)*\/.*\.rb$/
+    - !ruby/regexp /spec\/features(\/.*)*\/.*\.rb$/
+    - !ruby/regexp /spec\/lib\/tasks(\/.*)*\/.*\.rb$/
+    - !ruby/regexp /spec\/requests(\/.*)*\/.*\.rb$/
+    - !ruby/regexp /spec\/routing(\/.*)*\/.*\.rb$/
+    - !ruby/regexp /spec\/views(\/.*)*\/.*\.rb$/
+
+RSpec/ExampleLength:
+  Description: Checks for long examples.
+  Enabled: false
+
+RSpec/ExampleWithoutDescription:
+  Description: Checks for examples without a description.
+  Enabled: false
+
+RSpec/HookArgument:
+  Description: Omit the default :each argument for RSpec hooks.
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Description: Checks if examples contain too many `expect` calls.
+  Enabled: false
+
+RSpec/NamedSubject:
+  Enabled: true
+  IgnoreSharedExamples: false
+  Description: Checks for explicitly referenced test subjects.
+
+RSpec/NestedGroups:
+  Enabled: true
+  Description: Checks for nested example groups.
+  Max: 4
+
+RSpec/VerifiedDoubles:
+  Enabled: true
+  Description: Prefer using verifying doubles over normal doubles.
+  IgnoreSymbolicNames: true
+
+# Capybara - https://docs.rubocop.org/rubocop-rspec/cops_capybara.html
+
+RSpec/Capybara/FeatureMethods:
+  Description: Checks for consistent method usage in feature specs.
+  Enabled: false
+
+RSpec/InstanceVariable:
+  Description: Checks for instance variable usage in specs.
   Enabled: false

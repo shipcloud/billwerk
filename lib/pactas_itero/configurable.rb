@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module PactasItero
   module Configurable
     attr_accessor :bearer_token, :client_id, :client_secret, :user_agent,
@@ -7,7 +8,7 @@ module PactasItero
     class << self
       # List of configurable keys for PactasItero::Client
       def keys
-        @keys ||= [
+        @_keys ||= [
           :bearer_token,
           :api_endpoint,
           :client_id,
@@ -36,7 +37,7 @@ module PactasItero
 
     def api_endpoint
       endpoint = @api_endpoint ||
-        production && production_api_endpoint ||
+        (production && production_api_endpoint) ||
         sandbox_api_endpoint
       File.join(endpoint, "")
     end
@@ -52,7 +53,7 @@ module PactasItero
     private
 
     def options
-      Hash[PactasItero::Configurable.keys.map { |key| [key, send(:"#{key}")] }]
+      PactasItero::Configurable.keys.to_h { |key| [key, send(:"#{key}")] }
     end
   end
 end

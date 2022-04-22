@@ -32,7 +32,7 @@ describe PactasItero::Api::PaymentTransactions do
       expect(transaction.id).to eq "597de03d81b1ef0d18a46f4e"
       expect(transaction.payment_provider).to eq "Example Provider"
       expect(transaction.payment_provider_role).to eq "CreditCard"
-      expect(transaction.preauth).to eq false
+      expect(transaction.preauth).to be false
       expect(transaction.provider_transaction_id).to eq "ccec718e-271e-4d0e-b0e1-94894e40c0c7"
       expect(transaction.status).to eq(
         "amount" => 11.89,

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require "spec_helper"
 
 describe PactasItero::Api::Customers do
@@ -69,7 +70,7 @@ describe PactasItero::Api::Customers do
         "Locale" => "de-DE",
         "VatId" => "DE123456710",
       }.to_json
-      request = stub_post("/api/v1/customers").with(body: post_data).to_return(
+      stub_post("/api/v1/customers").with(body: post_data).to_return(
         body: fixture("customer.json"),
         headers: { content_type: "application/json; charset=utf-8" },
       )
@@ -128,7 +129,7 @@ describe PactasItero::Api::Customers do
 
     it "returns an array of customers" do
       client = PactasItero::Client.new(bearer_token: "bt")
-      request = stub_get("/api/v1/customers").
+      stub_get("/api/v1/customers").
         to_return(
           body: fixture("customers.json"),
           headers: { content_type: "application/json; charset=utf-8" },

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require "base64"
 require "rash"
 require "pactas_itero/configurable"
@@ -50,7 +51,7 @@ module PactasItero
     private
 
     def connection
-      @connection ||= Faraday.new(api_endpoint, connection_options)
+      @_connection ||= Faraday.new(api_endpoint, connection_options)
     end
 
     def request(method, path, params = {})
@@ -76,7 +77,7 @@ module PactasItero
     end
 
     def connection_options
-      @connection_options ||= {
+      @_connection_options ||= {
         builder: middleware,
         headers: {
           accept: default_media_type,

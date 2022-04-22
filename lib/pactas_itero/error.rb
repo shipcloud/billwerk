@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module PactasItero
   # Custom error class for rescuing from all Pactas errors
   class Error < StandardError
@@ -13,8 +14,8 @@ module PactasItero
 
       if klass =  case status
                   when 400      then PactasItero::BadRequest
-                  when 401      then error_for_401(headers)
-                  when 403      then error_for_403(body)
+                  when 401      then error_for401(headers)
+                  when 403      then error_for403(body)
                   when 404      then PactasItero::NotFound
                   when 406      then PactasItero::NotAcceptable
                   when 409      then PactasItero::Conflict
@@ -38,7 +39,7 @@ module PactasItero
 
     # Returns most appropriate error for 401 HTTP status code
     # @private
-    def self.error_for_401(headers)
+    def self.error_for401(headers)
       if PactasItero::OneTimePasswordRequired.required_header(headers)
         PactasItero::OneTimePasswordRequired
       else
@@ -48,10 +49,11 @@ module PactasItero
 
     # Returns most appropriate error for 403 HTTP status code
     # @private
-    def self.error_for_403(body)
-      if /rate limit exceeded/i.match?(body)
+    def self.error_for403(body)
+      case body
+      when /rate limit exceeded/i
         PactasItero::TooManyRequests
-      elsif /login attempts exceeded/i.match?(body)
+      when /login attempts exceeded/i
         PactasItero::TooManyLoginAttempts
       else
         PactasItero::Forbidden
@@ -61,7 +63,7 @@ module PactasItero
     # Array of validation errors
     # @return [Array<Hash>] Error info
     def errors
-      if data && data.is_a?(Hash)
+      if data.is_a?(Hash)
         data[:errors] || []
       else
         []
@@ -71,11 +73,11 @@ module PactasItero
     private
 
     def data
-      @data ||=
+      @_data ||=
         if (body = @response[:body]) && !body.empty?
           if body.is_a?(String) &&
               @response[:response_headers] &&
-              @response[:response_headers][:content_type] =~ /json/
+              @response[:response_headers][:content_type].include?("json")
 
             Sawyer::Agent.serializer.decode(body)
           else
@@ -111,19 +113,21 @@ module PactasItero
     def build_error_message
       return nil if @response.nil?
 
-      message =  "#{@response[:method].to_s.upcase} "
-      message << redact_url(@response[:url].to_s) + ": "
-      message << "#{@response[:status]} - "
-      message << response_message.to_s unless response_message.nil?
-      message << response_error.to_s unless response_error.nil?
-      message << response_error_summary.to_s unless response_error_summary.nil?
-      message
+      [
+        "#{@response[:method].to_s.upcase} ",
+        "#{redact_url(@response[:url].to_s)}: ",
+        "#{@response[:status]} - ",
+        (response_message.to_s unless response_message.nil?),
+        (response_error.to_s unless response_error.nil?),
+        (response_error_summary.to_s unless response_error_summary.nil?),
+      ].compact.join
     end
 
     def redact_url(url_string)
       %w[client_secret access_token].each do |token|
         url_string.gsub!(/#{token}=\S+/, "#{token}=(redacted)") if url_string.include? token
       end
+
       url_string
     end
   end
@@ -141,7 +145,7 @@ module PactasItero
   # and headers include "X-Pactas-OTP"
   class OneTimePasswordRequired < ClientError
     # @private
-    OTP_DELIVERY_PATTERN = /required; (\w+)/i
+    OTP_DELIVERY_PATTERN = /required; (\w+)/i.freeze
 
     # @private
     def self.required_header(headers)
@@ -152,7 +156,7 @@ module PactasItero
     #
     # @return [String]
     def password_delivery
-      @password_delivery ||= delivery_method_from_header
+      @_password_delivery ||= delivery_method_from_header
     end
 
     private

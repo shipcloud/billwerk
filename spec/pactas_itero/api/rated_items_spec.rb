@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require "spec_helper"
 
 describe PactasItero::Api::RatedItems do
@@ -44,7 +45,7 @@ describe PactasItero::Api::RatedItems do
         PricePerUnit: 123.45,
         TaxPolicyId: "tax-policy-id",
       }.to_json
-      request = stub_post("/api/v1/contracts/contract-id/ratedItems").
+      stub_post("/api/v1/contracts/contract-id/ratedItems").
         with(body: post_data).
         to_return(
           body: fixture("create_rated_item.json"),

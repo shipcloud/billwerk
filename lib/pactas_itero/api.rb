@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require "pactas_itero/ext/hash/camelize_keys"
 require "pactas_itero/api/oauth"
 require "pactas_itero/api/rated_items"

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require "spec_helper"
 
 describe PactasItero::Api::Invoices do
@@ -17,7 +18,7 @@ describe PactasItero::Api::Invoices do
 
     it "returns an array of contracts" do
       client = PactasItero::Client.new(bearer_token: "bt")
-      request = stub_get("/api/v1/invoices").
+      stub_get("/api/v1/invoices").
         to_return(
           body: fixture("invoices.json"),
           headers: { content_type: "application/json; charset=utf-8" },
@@ -58,7 +59,7 @@ describe PactasItero::Api::Invoices do
 
     it "returns an array of contracts" do
       client = PactasItero::Client.new(bearer_token: "bt")
-      request = stub_get("/api/v1/invoices?from=54b67d9e995ec90bc8f37718").
+      stub_get("/api/v1/invoices?from=54b67d9e995ec90bc8f37718").
         to_return(
           body: fixture("invoices.json"),
           headers: { content_type: "application/json; charset=utf-8" },
