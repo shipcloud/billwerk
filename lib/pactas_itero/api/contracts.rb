@@ -42,6 +42,11 @@ module PactasItero
         options = options.camelize_keys
         post "api/v1/contracts/#{contract_id}/end", options
       end
+
+      def contract_metered_usage(contract_id, options = {})
+        options = options.camelize_keys
+        post "api/v1/contracts/#{contract_id}/usage", options
+      end
     end
   end
 end
