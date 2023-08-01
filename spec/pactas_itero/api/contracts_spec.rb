@@ -192,4 +192,31 @@ describe PactasItero::Api::Contracts do
       expect(self_service_token.token).to eq "522703b9eb596a0f40480825$1378374980$JDBWmg34kr_mFIUFP"
     end
   end
+
+  describe ".contract_metered_usage" do
+    it "requests the correct resource" do
+      client = PactasItero::Client.new(bearer_token: "bt")
+      request = stub_post("/api/v1/contracts/5922f50b81b1f007e0e4d738/usage")
+        .with(
+          body: {
+            DueDate: "2020-02-26T09:32:36.123Z",
+            ComponentId: "5cb5c38e4de0842368ea6e32",
+            Quantity: 5
+          }.to_json
+        )
+        .to_return(
+          body: fixture("contract_metered_usage_response.json"),
+          headers: {content_type: "application/json; charset=utf-8"}
+        )
+
+      client.contract_metered_usage(
+        "5922f50b81b1f007e0e4d738",
+        due_date: "2020-02-26T09:32:36.123Z",
+        component_id: "5cb5c38e4de0842368ea6e32",
+        quantity: 5
+      )
+
+      expect(request).to have_been_made
+    end
+  end
 end
