@@ -69,7 +69,8 @@ workflows:
           matrix:
             parameters:
               image-tag:
-                - "ruby:3.2.2"
-                - "ruby:latest"
+                - "ruby:3.0"
+                - "ruby:3.1"
+                - "ruby:3.2"
               check-code-quality:
                 - false
