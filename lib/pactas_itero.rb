@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require "pactas_itero/client"
 require "pactas_itero/default"
 

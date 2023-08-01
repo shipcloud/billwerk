@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require "pactas_itero/response/raise_error"
 require "pactas_itero/version"
 require "faraday_middleware"
@@ -12,9 +13,9 @@ module PactasItero
 
     PRODUCTION = false
 
-    USER_AGENT   = "Pactas.Itero Ruby Gem #{PactasItero::VERSION}"
+    USER_AGENT = "Pactas.Itero Ruby Gem #{PactasItero::VERSION}"
 
-    MEDIA_TYPE   = "application/json"
+    MEDIA_TYPE = "application/json"
 
     MIDDLEWARE = Faraday::RackBuilder.new do |builder|
       builder.request :json

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require "spec_helper"
 
 describe PactasItero::Api::PaymentTransactions do
@@ -7,7 +8,7 @@ describe PactasItero::Api::PaymentTransactions do
       client = PactasItero::Client.new(bearer_token: "bearer_token")
       request = stub_get("/api/v1/PaymentTransactions/payment_transaction_id").to_return(
         body: fixture("payment_transaction.json"),
-        headers: { content_type: "application/json; charset=utf-8" },
+        headers: {content_type: "application/json; charset=utf-8"}
       )
 
       client.payment_transaction("payment_transaction_id")
@@ -19,7 +20,7 @@ describe PactasItero::Api::PaymentTransactions do
       client = PactasItero::Client.new(bearer_token: "bearer_token")
       stub_get("/api/v1/PaymentTransactions/payment_transaction_id").to_return(
         body: fixture("payment_transaction.json"),
-        headers: { content_type: "application/json; charset=utf-8" },
+        headers: {content_type: "application/json; charset=utf-8"}
       )
 
       transaction = client.payment_transaction("payment_transaction_id")
@@ -39,7 +40,7 @@ describe PactasItero::Api::PaymentTransactions do
         "http_code" => 0,
         "preauth" => false,
         "status" => "Succeeded",
-        "timestamp" => "2017-07-30T13:33:49.9900000Z",
+        "timestamp" => "2017-07-30T13:33:49.9900000Z"
       )
       expect(transaction.status_history).to eq(
         [
@@ -48,16 +49,16 @@ describe PactasItero::Api::PaymentTransactions do
             "http_code" => 0,
             "preauth" => false,
             "status" => "InProgress",
-            "timestamp" => "2017-07-30T13:33:49.9760000Z",
+            "timestamp" => "2017-07-30T13:33:49.9760000Z"
           },
           {
             "amount" => 11.89,
             "http_code" => 0,
             "preauth" => false,
             "status" => "Succeeded",
-            "timestamp" => "2017-07-30T13:33:49.9900000Z",
-          },
-        ],
+            "timestamp" => "2017-07-30T13:33:49.9900000Z"
+          }
+        ]
       )
       expect(transaction.status_timestamp).to eq "2017-07-30T13:33:49.9900000Z"
       expect(transaction.trigger).to eq "Recurring"

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module PactasItero
   # Custom error class for rescuing from all Pactas errors
   class Error < StandardError
@@ -8,28 +9,27 @@ module PactasItero
     # @param [Hash] response HTTP response
     # @return [PactasItero::Error]
     def self.from_response(response)
-      status  = response[:status].to_i
-      body    = response[:body].to_s
+      status = response[:status].to_i
+      body = response[:body].to_s
       headers = response[:response_headers]
 
-      if klass =  case status
-                  when 400      then PactasItero::BadRequest
-                  when 401      then error_for401(headers)
-                  when 403      then error_for403(body)
-                  when 404      then PactasItero::NotFound
-                  when 406      then PactasItero::NotAcceptable
-                  when 409      then PactasItero::Conflict
-                  when 415      then PactasItero::UnsupportedMediaType
-                  when 422      then PactasItero::UnprocessableEntity
-                  when 400..499 then PactasItero::ClientError
-                  when 500      then PactasItero::InternalServerError
-                  when 501      then PactasItero::NotImplemented
-                  when 502      then PactasItero::BadGateway
-                  when 503      then PactasItero::ServiceUnavailable
-                  when 500..599 then PactasItero::ServerError
-                  end
-        klass.new(response)
+      klass = case status
+      when 400 then PactasItero::BadRequest
+      when 401 then error_for401(headers)
+      when 403 then error_for403(body)
+      when 404 then PactasItero::NotFound
+      when 406 then PactasItero::NotAcceptable
+      when 409 then PactasItero::Conflict
+      when 415 then PactasItero::UnsupportedMediaType
+      when 422 then PactasItero::UnprocessableEntity
+      when 400..499 then PactasItero::ClientError
+      when 500 then PactasItero::InternalServerError
+      when 501 then PactasItero::NotImplemented
+      when 502 then PactasItero::BadGateway
+      when 503 then PactasItero::ServiceUnavailable
+      when 500..599 then PactasItero::ServerError
       end
+      klass&.new(response)
     end
 
     def initialize(response = nil)
@@ -119,7 +119,7 @@ module PactasItero
         "#{@response[:status]} - ",
         (response_message.to_s unless response_message.nil?),
         (response_error.to_s unless response_error.nil?),
-        (response_error_summary.to_s unless response_error_summary.nil?),
+        (response_error_summary.to_s unless response_error_summary.nil?)
       ].compact.join
     end
 
@@ -145,7 +145,7 @@ module PactasItero
   # and headers include "X-Pactas-OTP"
   class OneTimePasswordRequired < ClientError
     # @private
-    OTP_DELIVERY_PATTERN = /required; (\w+)/i.freeze
+    OTP_DELIVERY_PATTERN = /required; (\w+)/i
 
     # @private
     def self.required_header(headers)
@@ -162,7 +162,7 @@ module PactasItero
     private
 
     def delivery_method_from_header
-      if match = self.class.required_header(@response[:response_headers])
+      if (match = self.class.required_header(@response[:response_headers]))
         match[1]
       end
     end

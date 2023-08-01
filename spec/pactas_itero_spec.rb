@@ -1,11 +1,12 @@
 # frozen_string_literal: true
+
 require "spec_helper"
 
 describe PactasItero do
   it "sets defaults" do
     PactasItero::Configurable.keys.each do |key|
       expect(described_class.instance_variable_get(:"@#{key}")).to(
-        eq(PactasItero::Default.send(key)),
+        eq(PactasItero::Default.send(key))
       )
     end
   end
@@ -29,7 +30,7 @@ describe PactasItero do
 
   describe ".configure" do
     PactasItero::Configurable.keys.each do |key|
-      it "sets the #{key.to_s.gsub('_', ' ')}" do
+      it "sets the #{key.to_s.tr("_", " ")}" do
         described_class.configure do |config|
           config.send("#{key}=", key)
         end

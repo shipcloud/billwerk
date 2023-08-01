@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require "spec_helper"
 
 describe PactasItero::Api::Customers do
@@ -11,7 +12,7 @@ describe PactasItero::Api::Customers do
           "Country" => "DE",
           "HouseNumber" => "42",
           "PostalCode" => "12345",
-          "Street" => "Example Street",
+          "Street" => "Example Street"
         },
         "CompanyName" => "Example Company",
         "DefaultBearerMedium" => "Email",
@@ -21,11 +22,11 @@ describe PactasItero::Api::Customers do
         "Language" => "de-DE",
         "LastName" => "Doe",
         "Locale" => "de-DE",
-        "VatId" => "DE123456710",
+        "VatId" => "DE123456710"
       }.to_json
       request = stub_post("/api/v1/customers").with(body: post_data).to_return(
         body: fixture("customer.json"),
-        headers: { content_type: "application/json; charset=utf-8" },
+        headers: {content_type: "application/json; charset=utf-8"}
       )
 
       client.create_customer(
@@ -34,7 +35,7 @@ describe PactasItero::Api::Customers do
           country: "DE",
           house_number: "42",
           postal_code: "12345",
-          street: "Example Street",
+          street: "Example Street"
         },
         company_name: "Example Company",
         default_bearer_medium: "Email",
@@ -44,7 +45,7 @@ describe PactasItero::Api::Customers do
         language: "de-DE",
         last_name: "Doe",
         locale: "de-DE",
-        vat_id: "DE123456710",
+        vat_id: "DE123456710"
       )
 
       expect(request).to have_been_made
@@ -58,7 +59,7 @@ describe PactasItero::Api::Customers do
           "Country" => "DE",
           "HouseNumber" => "42",
           "PostalCode" => "12345",
-          "Street" => "Example Street",
+          "Street" => "Example Street"
         },
         "CompanyName" => "Example Company",
         "DefaultBearerMedium" => "Email",
@@ -68,11 +69,11 @@ describe PactasItero::Api::Customers do
         "Language" => "de-DE",
         "LastName" => "Doe",
         "Locale" => "de-DE",
-        "VatId" => "DE123456710",
+        "VatId" => "DE123456710"
       }.to_json
       stub_post("/api/v1/customers").with(body: post_data).to_return(
         body: fixture("customer.json"),
-        headers: { content_type: "application/json; charset=utf-8" },
+        headers: {content_type: "application/json; charset=utf-8"}
       )
 
       customer = client.create_customer(
@@ -81,7 +82,7 @@ describe PactasItero::Api::Customers do
           country: "DE",
           house_number: "42",
           postal_code: "12345",
-          street: "Example Street",
+          street: "Example Street"
         },
         company_name: "Example Company",
         default_bearer_medium: "Email",
@@ -91,7 +92,7 @@ describe PactasItero::Api::Customers do
         language: "de-DE",
         last_name: "Doe",
         locale: "de-DE",
-        vat_id: "DE123456710",
+        vat_id: "DE123456710"
       )
 
       address = customer.address
@@ -116,10 +117,10 @@ describe PactasItero::Api::Customers do
   describe ".customers" do
     it "requests the correct resource" do
       client = PactasItero::Client.new(bearer_token: "bt")
-      request = stub_get("/api/v1/customers").
-        to_return(
+      request = stub_get("/api/v1/customers")
+        .to_return(
           body: fixture("customers.json"),
-          headers: { content_type: "application/json; charset=utf-8" },
+          headers: {content_type: "application/json; charset=utf-8"}
         )
 
       client.customers
@@ -129,10 +130,10 @@ describe PactasItero::Api::Customers do
 
     it "returns an array of customers" do
       client = PactasItero::Client.new(bearer_token: "bt")
-      stub_get("/api/v1/customers").
-        to_return(
+      stub_get("/api/v1/customers")
+        .to_return(
           body: fixture("customers.json"),
-          headers: { content_type: "application/json; charset=utf-8" },
+          headers: {content_type: "application/json; charset=utf-8"}
         )
 
       customers = client.customers
@@ -166,7 +167,7 @@ describe PactasItero::Api::Customers do
       client = PactasItero::Client.new(bearer_token: "bearer_token")
       request = stub_get("/api/v1/customers/customer-id").to_return(
         body: fixture("customer.json"),
-        headers: { content_type: "application/json; charset=utf-8" },
+        headers: {content_type: "application/json; charset=utf-8"}
       )
 
       client.customer("customer-id")
@@ -178,7 +179,7 @@ describe PactasItero::Api::Customers do
       client = PactasItero::Client.new(bearer_token: "bearer_token")
       stub_get("/api/v1/customers/customer-id").to_return(
         body: fixture("customer.json"),
-        headers: { content_type: "application/json; charset=utf-8" },
+        headers: {content_type: "application/json; charset=utf-8"}
       )
 
       customer = client.customer("customer-id")
@@ -205,24 +206,24 @@ describe PactasItero::Api::Customers do
   describe ".update_customer" do
     it "requests the correct resource" do
       client = PactasItero::Client.new(bearer_token: "bt")
-      request = stub_patch("/api/v1/customers/customer-id").
-        with(
+      request = stub_patch("/api/v1/customers/customer-id")
+        .with(
           body: {
             CompanyName: "example & sons",
             VatId: "DE555",
-            Address: { Street: "abc street" },
-          }.to_json,
-        ).
-        to_return(
+            Address: {Street: "abc street"}
+          }.to_json
+        )
+        .to_return(
           body: fixture("customer.json"),
-          headers: { content_type: "application/json; charset=utf-8" },
+          headers: {content_type: "application/json; charset=utf-8"}
         )
 
       client.update_customer(
         "customer-id", {
           company_name: "example & sons",
           vat_id: "DE555",
-          address: { street: "abc street" },
+          address: {street: "abc street"}
         }
       )
 

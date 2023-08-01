@@ -1,14 +1,15 @@
 # frozen_string_literal: true
+
 require "spec_helper"
 
 describe PactasItero::Api::Contracts do
   describe ".customer_contracts" do
     it "requests the correct resource" do
       client = PactasItero::Client.new(bearer_token: "bt")
-      request = stub_get("/api/v1/customers/535783241d8dd00fa0db6b2a/contracts").
-        to_return(
+      request = stub_get("/api/v1/customers/535783241d8dd00fa0db6b2a/contracts")
+        .to_return(
           body: fixture("contracts.json"),
-          headers: { content_type: "application/json; charset=utf-8" },
+          headers: {content_type: "application/json; charset=utf-8"}
         )
 
       client.customer_contracts("535783241d8dd00fa0db6b2a")
@@ -18,10 +19,10 @@ describe PactasItero::Api::Contracts do
 
     it "returns an array of contracts" do
       client = PactasItero::Client.new(bearer_token: "bt")
-      stub_get("/api/v1/customers/535783241d8dd00fa0db6b2a/contracts").
-        to_return(
+      stub_get("/api/v1/customers/535783241d8dd00fa0db6b2a/contracts")
+        .to_return(
           body: fixture("contracts.json"),
-          headers: { content_type: "application/json; charset=utf-8" },
+          headers: {content_type: "application/json; charset=utf-8"}
         )
 
       contracts = client.customer_contracts("535783241d8dd00fa0db6b2a")
@@ -33,10 +34,10 @@ describe PactasItero::Api::Contracts do
   describe ".contract_changes" do
     it "requests the correct resource" do
       client = PactasItero::Client.new(bearer_token: "bt")
-      request = stub_get("/api/v1/contractChanges?contractId=5357bc4f1d8dd00fa0db6c31").
-        to_return(
+      request = stub_get("/api/v1/contractChanges?contractId=5357bc4f1d8dd00fa0db6c31")
+        .to_return(
           body: fixture("contract_changes.json"),
-          headers: { content_type: "application/json; charset=utf-8" },
+          headers: {content_type: "application/json; charset=utf-8"}
         )
 
       client.contract_changes("5357bc4f1d8dd00fa0db6c31")
@@ -46,10 +47,10 @@ describe PactasItero::Api::Contracts do
 
     it "returns an array of contract changes" do
       client = PactasItero::Client.new(bearer_token: "bt")
-      stub_get("/api/v1/contractChanges?contractId=5357bc4f1d8dd00fa0db6c31").
-        to_return(
+      stub_get("/api/v1/contractChanges?contractId=5357bc4f1d8dd00fa0db6c31")
+        .to_return(
           body: fixture("contract_changes.json"),
-          headers: { content_type: "application/json; charset=utf-8" },
+          headers: {content_type: "application/json; charset=utf-8"}
         )
 
       contract_changes = client.contract_changes("5357bc4f1d8dd00fa0db6c31")
@@ -61,10 +62,10 @@ describe PactasItero::Api::Contracts do
   describe ".contracts" do
     it "requests the correct resource" do
       client = PactasItero::Client.new(bearer_token: "bt")
-      request = stub_get("/api/v1/contracts").
-        to_return(
+      request = stub_get("/api/v1/contracts")
+        .to_return(
           body: fixture("contracts.json"),
-          headers: { content_type: "application/json; charset=utf-8" },
+          headers: {content_type: "application/json; charset=utf-8"}
         )
 
       client.contracts
@@ -74,10 +75,10 @@ describe PactasItero::Api::Contracts do
 
     it "returns an array of contracts" do
       client = PactasItero::Client.new(bearer_token: "bt")
-      stub_get("/api/v1/contracts").
-        to_return(
+      stub_get("/api/v1/contracts")
+        .to_return(
           body: fixture("contracts.json"),
-          headers: { content_type: "application/json; charset=utf-8" },
+          headers: {content_type: "application/json; charset=utf-8"}
         )
 
       contracts = client.contracts
@@ -91,7 +92,7 @@ describe PactasItero::Api::Contracts do
       client = PactasItero::Client.new(bearer_token: "bt")
       request = stub_get("/api/v1/contracts/some_contract_id/cancellationPreview").to_return(
         body: fixture("contract_cancellation_preview_response.json"),
-        headers: { content_type: "application/json; charset=utf-8" },
+        headers: {content_type: "application/json; charset=utf-8"}
       )
 
       client.contract_cancellation_preview("some_contract_id")
@@ -103,13 +104,13 @@ describe PactasItero::Api::Contracts do
       client = PactasItero::Client.new(bearer_token: "bt")
       stub_get("/api/v1/contracts/some_contract_id/cancellationPreview").to_return(
         body: fixture("contract_cancellation_preview_response.json"),
-        headers: { content_type: "application/json; charset=utf-8" },
+        headers: {content_type: "application/json; charset=utf-8"}
       )
 
       contract_cancellation_preview = client.contract_cancellation_preview("some_contract_id")
 
       expect(
-        contract_cancellation_preview.next_possible_cancellation_date,
+        contract_cancellation_preview.next_possible_cancellation_date
       ).to eq "2015-11-15T10:02:21.2750000Z"
     end
   end
@@ -117,14 +118,14 @@ describe PactasItero::Api::Contracts do
   describe ".update_contract" do
     it "requests the correct resource" do
       client = PactasItero::Client.new(bearer_token: "bt")
-      request = stub_patch("/api/v1/contracts/contract-id").
-        with(body: { EndDate: "2014-05-23T13:12:47.0760000Z" }.to_json).
-        to_return(
+      request = stub_patch("/api/v1/contracts/contract-id")
+        .with(body: {EndDate: "2014-05-23T13:12:47.0760000Z"}.to_json)
+        .to_return(
           body: fixture("contract.json"),
-          headers: { content_type: "application/json; charset=utf-8" },
+          headers: {content_type: "application/json; charset=utf-8"}
         )
 
-      client.update_contract("contract-id", { end_date: "2014-05-23T13:12:47.0760000Z" })
+      client.update_contract("contract-id", {end_date: "2014-05-23T13:12:47.0760000Z"})
 
       expect(request).to have_been_made
     end
@@ -133,10 +134,10 @@ describe PactasItero::Api::Contracts do
   describe ".contract" do
     it "requests the correct resource" do
       client = PactasItero::Client.new(bearer_token: "bt")
-      request = stub_get("/api/v1/contracts/5357bc4f1d8dd00fa0db6c31").
-        to_return(
+      request = stub_get("/api/v1/contracts/5357bc4f1d8dd00fa0db6c31")
+        .to_return(
           body: fixture("contract.json"),
-          headers: { content_type: "application/json; charset=utf-8" },
+          headers: {content_type: "application/json; charset=utf-8"}
         )
 
       client.contract("5357bc4f1d8dd00fa0db6c31")
@@ -148,18 +149,18 @@ describe PactasItero::Api::Contracts do
   describe ".terminate_contract" do
     it "requests the correct resource" do
       client = PactasItero::Client.new(bearer_token: "bt")
-      request = stub_post("/api/v1/contracts/5922f50b81b1f007e0e4d738/end").
-        with(
-          body: { EndDate: "2017-10-01T14:51:29.3390000Z" }.to_json,
-        ).
-        to_return(
+      request = stub_post("/api/v1/contracts/5922f50b81b1f007e0e4d738/end")
+        .with(
+          body: {EndDate: "2017-10-01T14:51:29.3390000Z"}.to_json
+        )
+        .to_return(
           body: fixture("contract_termination_response.json"),
-          headers: { content_type: "application/json; charset=utf-8" },
+          headers: {content_type: "application/json; charset=utf-8"}
         )
 
       client.terminate_contract(
         "5922f50b81b1f007e0e4d738",
-        end_date: "2017-10-01T14:51:29.3390000Z",
+        end_date: "2017-10-01T14:51:29.3390000Z"
       )
 
       expect(request).to have_been_made
@@ -171,7 +172,7 @@ describe PactasItero::Api::Contracts do
       client = PactasItero::Client.new(bearer_token: "bt")
       request = stub_get("/api/v1/contracts/5357bc4f1d8dd00fa0db6c31/SelfServiceToken").to_return(
         body: fixture("self_service_token.json"),
-        headers: { content_type: "application/json; charset=utf-8" },
+        headers: {content_type: "application/json; charset=utf-8"}
       )
 
       client.get_self_service_token_for_contract("5357bc4f1d8dd00fa0db6c31")
@@ -183,7 +184,7 @@ describe PactasItero::Api::Contracts do
       client = PactasItero::Client.new(bearer_token: "bt")
       stub_get("/api/v1/contracts/5357bc4f1d8dd00fa0db6c31/SelfServiceToken").to_return(
         body: fixture("self_service_token.json"),
-        headers: { content_type: "application/json; charset=utf-8" },
+        headers: {content_type: "application/json; charset=utf-8"}
       )
 
       self_service_token = client.get_self_service_token_for_contract("5357bc4f1d8dd00fa0db6c31")

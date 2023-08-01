@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require "spec_helper"
 require "json"
 
@@ -29,7 +30,7 @@ describe PactasItero::Client do
         @opts = {
           # connection_options: {ssl: {verify: false}},
           client_id: "the_client_id",
-          client_secret: "the_client_secret",
+          client_secret: "the_client_secret"
         }
       end
 
@@ -68,8 +69,8 @@ describe PactasItero::Client do
 
     it "passes along request headers" do
       client = described_class.new(bearer_token: "bt")
-      request = stub_get("/").
-        with(query: { foo: "bar" }, headers: { accept: "text/plain" })
+      request = stub_get("/")
+        .with(query: {foo: "bar"}, headers: {accept: "text/plain"})
       client.get "/", foo: "bar", accept: "text/plain"
 
       expect(request).to have_been_made
@@ -88,8 +89,8 @@ describe PactasItero::Client do
 
     it "passes along request headers" do
       client = described_class.new(bearer_token: "bt")
-      request = stub_head("/").
-        with(query: { foo: "bar" }, headers: { accept: "text/plain" })
+      request = stub_head("/")
+        .with(query: {foo: "bar"}, headers: {accept: "text/plain"})
 
       client.head "/", foo: "bar", accept: "text/plain"
 
@@ -100,8 +101,8 @@ describe PactasItero::Client do
   describe ".post" do
     it "requests the given resource using post" do
       client = described_class.new(bearer_token: "bt")
-      request = stub_post("/something").
-        with(body: { foo: "bar" }.to_json)
+      request = stub_post("/something")
+        .with(body: {foo: "bar"}.to_json)
 
       client.post "/something", foo: "bar"
 
@@ -110,9 +111,9 @@ describe PactasItero::Client do
 
     it "passes along request headers" do
       client = described_class.new(bearer_token: "bt")
-      headers = { "X-Foo" => "bar" }
-      request = stub_post("/").
-        with(body: { foo: "bar" }.to_json, headers: headers)
+      headers = {"X-Foo" => "bar"}
+      request = stub_post("/")
+        .with(body: {foo: "bar"}.to_json, headers: headers)
 
       client.post "/", foo: "bar", headers: headers
 
@@ -123,8 +124,8 @@ describe PactasItero::Client do
   describe ".put" do
     it "requests the given resource using put" do
       client = described_class.new(bearer_token: "bt")
-      request = stub_put("/something").
-        with(body: { foo: "bar" }.to_json)
+      request = stub_put("/something")
+        .with(body: {foo: "bar"}.to_json)
 
       client.put "/something", foo: "bar"
 
@@ -133,9 +134,9 @@ describe PactasItero::Client do
 
     it "passes along request headers" do
       client = described_class.new(bearer_token: "bt")
-      headers = { "X-Foo" => "bar" }
-      request = stub_put("/").
-        with(body: { foo: "bar" }.to_json, headers: headers)
+      headers = {"X-Foo" => "bar"}
+      request = stub_put("/")
+        .with(body: {foo: "bar"}.to_json, headers: headers)
 
       client.put "/", foo: "bar", headers: headers
 
@@ -146,8 +147,8 @@ describe PactasItero::Client do
   describe ".patch" do
     it "requests the given resource using patch" do
       client = described_class.new(bearer_token: "bt")
-      request = stub_patch("/something").
-        with(body: { foo: "bar" }.to_json)
+      request = stub_patch("/something")
+        .with(body: {foo: "bar"}.to_json)
 
       client.patch "/something", foo: "bar"
 
@@ -156,9 +157,9 @@ describe PactasItero::Client do
 
     it "passes along request headers" do
       client = described_class.new(bearer_token: "bt")
-      headers = { "X-Foo" => "bar" }
-      request = stub_patch("/").
-        with(body: { foo: "bar" }.to_json, headers: headers)
+      headers = {"X-Foo" => "bar"}
+      request = stub_patch("/")
+        .with(body: {foo: "bar"}.to_json, headers: headers)
 
       client.patch "/", foo: "bar", headers: headers
 
@@ -178,7 +179,7 @@ describe PactasItero::Client do
 
     it "passes along request headers" do
       client = described_class.new(bearer_token: "bt")
-      headers = { "X-Foo" => "bar" }
+      headers = {"X-Foo" => "bar"}
       request = stub_delete("/").with(headers: headers)
 
       client.delete "/", headers: headers
@@ -202,8 +203,8 @@ describe PactasItero::Client do
 
     it "sets a default user agent" do
       client = described_class.new(bearer_token: "bt")
-      request = stub_get("/").
-        with(headers: { user_agent: PactasItero::Default.user_agent })
+      request = stub_get("/")
+        .with(headers: {user_agent: PactasItero::Default.user_agent})
 
       client.get "/"
 
@@ -213,7 +214,7 @@ describe PactasItero::Client do
     it "accepts a custom user agent" do
       user_agent = "Mozilla/1.0 (Win3.1)"
       client = described_class.new(user_agent: user_agent, bearer_token: "bt")
-      request = stub_get("/").with(headers: { user_agent: user_agent })
+      request = stub_get("/").with(headers: {user_agent: user_agent})
 
       client.get "/"
 
@@ -222,7 +223,7 @@ describe PactasItero::Client do
 
     it "creates the correct auth headers with supplied bearer_token" do
       token = "the_bearer_token"
-      request = stub_get("/").with(headers: { authorization: "Bearer #{token}" })
+      request = stub_get("/").with(headers: {authorization: "Bearer #{token}"})
       client = described_class.new(bearer_token: token)
 
       client.get "/"
@@ -234,7 +235,7 @@ describe PactasItero::Client do
       token = Struct.new(:access_token).new(access_token: "the_bearer_token")
       client = described_class.new(bearer_token: token)
 
-      request = stub_get("/").with(headers: { authorization: "Bearer #{token.access_token}" })
+      request = stub_get("/").with(headers: {authorization: "Bearer #{token.access_token}"})
 
       client.get "/"
 
@@ -261,16 +262,16 @@ describe PactasItero::Client do
       client = described_class.new(bearer_token: "bt")
       stub_get("/with_message").to_return(
         status: 422,
-        headers: { content_type: "application/json" },
+        headers: {content_type: "application/json"},
         body: {
-          Message: "'Something' is not a valid ObjectId. Expected a 24 digit hex string.",
-        }.to_json,
+          Message: "'Something' is not a valid ObjectId. Expected a 24 digit hex string."
+        }.to_json
       )
 
       expect { client.get("/with_message") }.to raise_error(
         PactasItero::UnprocessableEntity,
         "GET https://sandbox.billwerk.com/with_message: " \
-        "422 - 'Something' is not a valid ObjectId. Expected a 24 digit hex string.",
+        "422 - 'Something' is not a valid ObjectId. Expected a 24 digit hex string."
       )
     end
 
@@ -278,8 +279,8 @@ describe PactasItero::Client do
       client = described_class.new(bearer_token: "bt")
       stub_get("/something").to_return(
         status: 418,
-        headers: { content_type: "application/json" },
-        body: { message: "I'm a teapot" }.to_json,
+        headers: {content_type: "application/json"},
+        body: {message: "I'm a teapot"}.to_json
       )
 
       expect { client.get("/something") }.to raise_error PactasItero::ClientError
@@ -289,8 +290,8 @@ describe PactasItero::Client do
       client = described_class.new(bearer_token: "bt")
       stub_get("/something").to_return(
         status: 509,
-        headers: { content_type: "application/json" },
-        body: { message: "Bandwidth exceeded" }.to_json,
+        headers: {content_type: "application/json"},
+        body: {message: "Bandwidth exceeded"}.to_json
       )
 
       expect { client.get("/something") }.to raise_error PactasItero::ServerError
