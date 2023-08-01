@@ -62,7 +62,7 @@ workflows:
           matrix:
             parameters:
               image-tag:
-                - "ruby:2.6"
+                - "ruby:3.2"
   version-check:
     jobs:
       - build:
