@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Hash
   def camelize_keys(value = self)
     case value

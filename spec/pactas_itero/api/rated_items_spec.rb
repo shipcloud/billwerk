@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require "spec_helper"
 
 describe PactasItero::Api::RatedItems do
@@ -11,13 +12,13 @@ describe PactasItero::Api::RatedItems do
         Quantity: 2,
         Description: "the description",
         PricePerUnit: 123.45,
-        TaxPolicyId: "tax-policy-id",
+        TaxPolicyId: "tax-policy-id"
       }.to_json
-      request = stub_post("/api/v1/contracts/contract-id/ratedItems").
-        with(body: post_data).
-        to_return(
+      request = stub_post("/api/v1/contracts/contract-id/ratedItems")
+        .with(body: post_data)
+        .to_return(
           body: fixture("create_rated_item.json"),
-          headers: { content_type: "application/json; charset=utf-8" },
+          headers: {content_type: "application/json; charset=utf-8"}
         )
 
       client.create_rated_item(
@@ -28,8 +29,8 @@ describe PactasItero::Api::RatedItems do
         "tax-policy-id",
         {
           period_start: "2014-09-19T08:18:51.907Z",
-          period_end: "2014-09-19T08:19:51.907Z",
-        },
+          period_end: "2014-09-19T08:19:51.907Z"
+        }
       )
 
       expect(request).to have_been_made
@@ -43,13 +44,13 @@ describe PactasItero::Api::RatedItems do
         Quantity: 2,
         Description: "the description",
         PricePerUnit: 123.45,
-        TaxPolicyId: "tax-policy-id",
+        TaxPolicyId: "tax-policy-id"
       }.to_json
-      stub_post("/api/v1/contracts/contract-id/ratedItems").
-        with(body: post_data).
-        to_return(
+      stub_post("/api/v1/contracts/contract-id/ratedItems")
+        .with(body: post_data)
+        .to_return(
           body: fixture("create_rated_item.json"),
-          headers: { content_type: "application/json; charset=utf-8" },
+          headers: {content_type: "application/json; charset=utf-8"}
         )
 
       rated_item = client.create_rated_item(
@@ -60,8 +61,8 @@ describe PactasItero::Api::RatedItems do
         "tax-policy-id",
         {
           period_start: "2014-09-19T08:18:51.907Z",
-          period_end: "2014-09-19T08:19:51.907Z",
-        },
+          period_end: "2014-09-19T08:19:51.907Z"
+        }
       )
 
       expect(rated_item.description).to eq "the description"
@@ -76,10 +77,10 @@ describe PactasItero::Api::RatedItems do
   describe ".rated_items" do
     it "returns rated items" do
       client = PactasItero::Client.new(bearer_token: "bt")
-      stub_get("/api/v1/contracts/contract-id/ratedItems").
-        to_return(
+      stub_get("/api/v1/contracts/contract-id/ratedItems")
+        .to_return(
           body: fixture("rated_items.json"),
-          headers: { content_type: "application/json; charset=utf-8" },
+          headers: {content_type: "application/json; charset=utf-8"}
         )
 
       rated_items = client.rated_items("contract-id")
@@ -100,10 +101,10 @@ describe PactasItero::Api::RatedItems do
   describe ".delete_rated_item" do
     it "deletes a rated item" do
       client = PactasItero::Client.new(bearer_token: "bt")
-      stub_delete("/api/v1/ratedItems/rated-item-id").
-        to_return(
+      stub_delete("/api/v1/ratedItems/rated-item-id")
+        .to_return(
           body: "",
-          headers: { content_type: "application/json; charset=utf-8" },
+          headers: {content_type: "application/json; charset=utf-8"}
         )
 
       response = client.delete_rated_item("rated-item-id")

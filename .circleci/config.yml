@@ -1,8 +1,8 @@
 version: 2.1
 jobs:
-  rubocop:
+  standard:
     docker:
-      - image: circleci/ruby:2.6
+      - image: cimg/ruby:3.2.2
         environment:
           LANG: en_US.UTF-8
           BUNDLE_DISABLE_VERSION_CHECK: 1
@@ -12,8 +12,8 @@ jobs:
           name: Install ruby dependencies
           command: gem update --system; bin/setup
       - run:
-          name: Run Rubocop
-          command: bundle exec rubocop
+          name: Run standardrb
+          command: bundle exec standardrb
   build:
     parameters:
       image-tag:
@@ -24,7 +24,7 @@ jobs:
         type: boolean
         default: true
     docker:
-      - image: circleci/<< parameters.image-tag >>
+      - image: cimg/<< parameters.image-tag >>
         environment:
           LANG: en_US.UTF-8
           BUNDLE_DISABLE_VERSION_CHECK: 1
@@ -57,20 +57,20 @@ jobs:
 workflows:
   build:
     jobs:
-      - rubocop
+      - standard
       - build:
           matrix:
             parameters:
               image-tag:
-                - "ruby:2.6"
+                - "ruby:3.2"
   version-check:
     jobs:
       - build:
           matrix:
             parameters:
               image-tag:
-                - "ruby:2.7"
                 - "ruby:3.0"
-                - "ruby:latest"
+                - "ruby:3.1"
+                - "ruby:3.2"
               check-code-quality:
                 - false

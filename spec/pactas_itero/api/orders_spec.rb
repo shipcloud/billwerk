@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require "spec_helper"
 
 describe PactasItero::Api::Orders do
@@ -8,21 +9,21 @@ describe PactasItero::Api::Orders do
       post_data = {
         ContractId: "5370e5ab9e40071fd01e01e0",
         Cart: {
-          PlanVariantId: "525bf9089e40073a58590fd5",
-        },
+          PlanVariantId: "525bf9089e40073a58590fd5"
+        }
       }.to_json
-      request = stub_post("/api/v1/orders").
-        with(body: post_data).
-        to_return(
+      request = stub_post("/api/v1/orders")
+        .with(body: post_data)
+        .to_return(
           body: fixture("create_order_response.json"),
-          headers: { content_type: "application/json; charset=utf-8" },
+          headers: {content_type: "application/json; charset=utf-8"}
         )
 
       client.create_order(
         contract_id: "5370e5ab9e40071fd01e01e0",
         cart: {
-          plan_variant_id: "525bf9089e40073a58590fd5",
-        },
+          plan_variant_id: "525bf9089e40073a58590fd5"
+        }
       )
 
       expect(request).to have_been_made
@@ -33,21 +34,21 @@ describe PactasItero::Api::Orders do
       post_data = {
         ContractId: "5370e5ab9e40071fd01e01e0",
         Cart: {
-          PlanVariantId: "525bf9089e40073a58590fd5",
-        },
+          PlanVariantId: "525bf9089e40073a58590fd5"
+        }
       }.to_json
-      stub_post("/api/v1/orders").
-        with(body: post_data).
-        to_return(
+      stub_post("/api/v1/orders")
+        .with(body: post_data)
+        .to_return(
           body: fixture("create_order_response.json"),
-          headers: { content_type: "application/json; charset=utf-8" },
+          headers: {content_type: "application/json; charset=utf-8"}
         )
 
       order = client.create_order(
         contract_id: "5370e5ab9e40071fd01e01e0",
         cart: {
-          plan_variant_id: "525bf9089e40073a58590fd5",
-        },
+          plan_variant_id: "525bf9089e40073a58590fd5"
+        }
       )
 
       expect(order.id).to eq "537dfcab9e400760b4cd6347"
@@ -58,10 +59,10 @@ describe PactasItero::Api::Orders do
   describe ".order" do
     it "requests the correct resource" do
       client = PactasItero::Client.new(bearer_token: "bt")
-      request = stub_get("/api/v1/orders/5357bc4f1d8dd00fa0db6c31").
-        to_return(
+      request = stub_get("/api/v1/orders/5357bc4f1d8dd00fa0db6c31")
+        .to_return(
           body: fixture("order.json"),
-          headers: { content_type: "application/json; charset=utf-8" },
+          headers: {content_type: "application/json; charset=utf-8"}
         )
 
       client.order("5357bc4f1d8dd00fa0db6c31")
@@ -73,11 +74,11 @@ describe PactasItero::Api::Orders do
   describe ".commit_order" do
     it "requests the correct resource" do
       client = PactasItero::Client.new(bearer_token: "bt")
-      request = stub_post("/api/v1/orders/537dfcab9e400760b4cd6347/commit").
-        with(body: {}.to_json).
-        to_return(
+      request = stub_post("/api/v1/orders/537dfcab9e400760b4cd6347/commit")
+        .with(body: {}.to_json)
+        .to_return(
           body: fixture("commit_order_response.json"),
-          headers: { content_type: "application/json; charset=utf-8" },
+          headers: {content_type: "application/json; charset=utf-8"}
         )
 
       client.commit_order("537dfcab9e400760b4cd6347")
@@ -87,11 +88,11 @@ describe PactasItero::Api::Orders do
 
     it "returns the updated contract" do
       client = PactasItero::Client.new(bearer_token: "bt")
-      stub_post("/api/v1/orders/537dfcab9e400760b4cd6347/commit").
-        with(body: {}.to_json).
-        to_return(
+      stub_post("/api/v1/orders/537dfcab9e400760b4cd6347/commit")
+        .with(body: {}.to_json)
+        .to_return(
           body: fixture("commit_order_response.json"),
-          headers: { content_type: "application/json; charset=utf-8" },
+          headers: {content_type: "application/json; charset=utf-8"}
         )
 
       contract = client.commit_order("537dfcab9e400760b4cd6347")

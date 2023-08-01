@@ -1,8 +1,9 @@
 # frozen_string_literal: true
+
 require "simplecov"
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
-  SimpleCov::Formatter::HTMLFormatter,
+  SimpleCov::Formatter::HTMLFormatter
 )
 
 SimpleCov.start do
@@ -36,7 +37,7 @@ RSpec.configure do |config|
     /bin\//,
     /vendor\/bundle\/(.*)\/gems\//,
     /spec\/spec_helper.rb/,
-    /lib\/rspec\/(core|expectations|matchers|mocks)/,
+    /lib\/rspec\/(core|expectations|matchers|mocks)/
   ]
 
   config.after do

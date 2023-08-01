@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require "base64"
 require "rash"
 require "pactas_itero/configurable"
@@ -15,7 +16,7 @@ module PactasItero
       PactasItero::Configurable.keys.each do |key|
         instance_variable_set(
           :"@#{key}",
-          options[key] || PactasItero.instance_variable_get(:"@#{key}"),
+          options[key] || PactasItero.instance_variable_get(:"@#{key}")
         )
       end
     end
@@ -56,16 +57,16 @@ module PactasItero
 
     def request(method, path, params = {})
       headers = params.delete(:headers) || {}
-      if accept = params.delete(:accept)
+      if (accept = params.delete(:accept))
         headers[:accept] = accept
       end
 
       bearer_token_request = params.delete(:bearer_token_request)
 
       if bearer_token_request
-        headers[:accept]        = "*/*"
+        headers[:accept] = "*/*"
         headers[:authorization] = bearer_token_credentials_auth_header
-        headers[:content_type]  = "application/x-www-form-urlencoded; charset=UTF-8"
+        headers[:content_type] = "application/x-www-form-urlencoded; charset=UTF-8"
       else
         headers[:authorization] = auth_header
       end
@@ -81,12 +82,12 @@ module PactasItero
         builder: middleware,
         headers: {
           accept: default_media_type,
-          user_agent: user_agent,
+          user_agent: user_agent
         },
         request: {
           open_timeout: 10,
-          timeout: 30,
-        },
+          timeout: 30
+        }
       }
     end
 

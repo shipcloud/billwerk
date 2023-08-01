@@ -1,8 +1,9 @@
 # frozen_string_literal: true
+
 module PactasItero
   module Configurable
     attr_accessor :bearer_token, :client_id, :client_secret, :user_agent,
-                  :default_media_type, :middleware, :production
+      :default_media_type, :middleware, :production
     attr_writer :api_endpoint
 
     class << self
@@ -16,7 +17,7 @@ module PactasItero
           :user_agent,
           :default_media_type,
           :middleware,
-          :production,
+          :production
         ]
       end
     end
@@ -33,7 +34,7 @@ module PactasItero
       end
       self
     end
-    alias setup reset!
+    alias_method :setup, :reset!
 
     def api_endpoint
       endpoint = @api_endpoint ||
