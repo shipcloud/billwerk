@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  rubocop:
+  standard:
     docker:
       - image: cimg/ruby:3.2.2
         environment:
@@ -12,7 +12,7 @@ jobs:
           name: Install ruby dependencies
           command: gem update --system; bin/setup
       - run:
-          name: Run Rubocop
+          name: Run standardrb
           command: bundle exec standardrb
   build:
     parameters:
@@ -57,7 +57,7 @@ jobs:
 workflows:
   build:
     jobs:
-      - rubocop
+      - standard
       - build:
           matrix:
             parameters:
