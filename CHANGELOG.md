@@ -11,6 +11,21 @@
 
 ### Security
 
+## [0.8.0] - 2022-02-22
+
+# What's Changed
+
+## Added
+
+- Add Metered Usage call by @3wille in https://github.com/shipcloud/billwerk/pull/146
+
+## Changed
+
+- Fix current Rubocop Issues by @mortik in https://github.com/shipcloud/billwerk/pull/111
+- update ruby and introduce standardrb by @3wille in https://github.com/shipcloud/billwerk/pull/147
+
+**Diff**: https://github.com/shipcloud/billwerk/compare/v0.7.0...v0.8.0
+
 ## [0.7.0] - 2022-02-22
 
 ### Added
