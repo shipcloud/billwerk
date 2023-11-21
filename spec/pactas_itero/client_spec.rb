@@ -221,7 +221,7 @@ describe PactasItero::Client do
       expect(request).to have_been_made
     end
 
-    it "accepts a legal enity id" do
+    it "accepts a legal entity id" do
       legal_entity_id = "a-legal-entity-id"
       client = described_class.new(legal_entity_id:, bearer_token: "bt")
       request = stub_get("/").with(headers: {"X-SELECTED-LEGAL-ENTITY-ID": legal_entity_id})
@@ -231,7 +231,7 @@ describe PactasItero::Client do
       expect(request).to have_been_made
     end
 
-    it "accepts a legal enity id as option" do
+    it "accepts a legal entity id as option" do
       client = described_class.new(bearer_token: "bt")
       legal_entity_id = "a-legal-entity-id"
       request = stub_get("/").with(headers: {"X-SELECTED-LEGAL-ENTITY-ID": legal_entity_id})
