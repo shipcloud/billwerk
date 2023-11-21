@@ -221,6 +221,26 @@ describe PactasItero::Client do
       expect(request).to have_been_made
     end
 
+    it "accepts a legal enity id" do
+      legal_entity_id = "a-legal-entity-id"
+      client = described_class.new(legal_entity_id:, bearer_token: "bt")
+      request = stub_get("/").with(headers: {"X-SELECTED-LEGAL-ENTITY-ID": legal_entity_id})
+
+      client.get "/"
+
+      expect(request).to have_been_made
+    end
+
+    it "accepts a legal enity id as option" do
+      client = described_class.new(bearer_token: "bt")
+      legal_entity_id = "a-legal-entity-id"
+      request = stub_get("/").with(headers: {"X-SELECTED-LEGAL-ENTITY-ID": legal_entity_id})
+
+      client.get "/", {legal_entity_id:}
+
+      expect(request).to have_been_made
+    end
+
     it "creates the correct auth headers with supplied bearer_token" do
       token = "the_bearer_token"
       request = stub_get("/").with(headers: {authorization: "Bearer #{token}"})
@@ -244,6 +264,13 @@ describe PactasItero::Client do
   end
 
   context "error handling" do
+    it "raises on 400" do
+      client = described_class.new(bearer_token: "bt")
+      stub_get("/four_oh_oh").to_return(status: 400)
+
+      expect { client.get("/four_oh_oh") }.to raise_error PactasItero::BadRequest
+    end
+
     it "raises on 404" do
       client = described_class.new(bearer_token: "bt")
       stub_get("/four_oh_four").to_return(status: 404)

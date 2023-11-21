@@ -17,6 +17,8 @@ module PactasItero
 
     MEDIA_TYPE = "application/json"
 
+    LEGAL_ENTITY_ID_PLACEHOLDER = "Placeholder"
+
     MIDDLEWARE = Faraday::RackBuilder.new do |builder|
       builder.request :json
       builder.use PactasItero::Response::RaiseError
@@ -70,6 +72,10 @@ module PactasItero
 
       def user_agent
         ENV["PACTAS_ITERO_USER_AGENT"] || USER_AGENT
+      end
+
+      def legal_entity_id
+        LEGAL_ENTITY_ID_PLACEHOLDER
       end
     end
   end
