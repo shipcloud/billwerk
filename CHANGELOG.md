@@ -1,6 +1,8 @@
 ## [UNRELEASED]
 
 ### Added
+- Add legal_entity_id as option for all requests https://github.com/shipcloud/billwerk/pull/152
+
 ### Changed
 
 ### Deprecated
