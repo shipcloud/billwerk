@@ -223,7 +223,7 @@ describe PactasItero::Client do
 
     it "accepts a legal entity id" do
       legal_entity_id = "a-legal-entity-id"
-      client = described_class.new(legal_entity_id:, bearer_token: "bt")
+      client = described_class.new(legal_entity_id: legal_entity_id, bearer_token: "bt")
       request = stub_get("/").with(headers: {"X-SELECTED-LEGAL-ENTITY-ID": legal_entity_id})
 
       client.get "/"
