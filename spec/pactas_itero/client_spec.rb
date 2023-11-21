@@ -236,7 +236,7 @@ describe PactasItero::Client do
       legal_entity_id = "a-legal-entity-id"
       request = stub_get("/").with(headers: {"X-SELECTED-LEGAL-ENTITY-ID": legal_entity_id})
 
-      client.get "/", {legal_entity_id:}
+      client.get "/", {legal_entity_id: legal_entity_id}
 
       expect(request).to have_been_made
     end
