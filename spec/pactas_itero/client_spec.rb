@@ -271,6 +271,13 @@ describe PactasItero::Client do
       expect { client.get("/four_oh_oh") }.to raise_error PactasItero::BadRequest
     end
 
+    it "raises on 403" do
+      client = described_class.new(bearer_token: "bt")
+      stub_get("/four_oh_three").to_return(status: 403)
+
+      expect { client.get("/four_oh_three") }.to raise_error PactasItero::Forbidden
+    end
+
     it "raises on 404" do
       client = described_class.new(bearer_token: "bt")
       stub_get("/four_oh_four").to_return(status: 404)
