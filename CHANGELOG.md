@@ -15,6 +15,16 @@
 
 # What's Changed
 
+## [0.8.1] - 2023-11-27
+
+### Changed
+
+- Update .circleci/config.yml
+
+### Removed
+
+- .rubocop.yml
+
 ## Added
 
 - Add Metered Usage call by @3wille in https://github.com/shipcloud/billwerk/pull/146
