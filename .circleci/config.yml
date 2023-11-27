@@ -2,57 +2,47 @@ version: 2.1
 jobs:
   standard:
     docker:
-      - image: cimg/ruby:3.2.2
-        environment:
-          LANG: en_US.UTF-8
+      - environment:
           BUNDLE_DISABLE_VERSION_CHECK: 1
+          LANG: en_US.UTF-8
+        image: cimg/ruby:3.2.2
     steps:
       - checkout
       - run:
-          name: Install ruby dependencies
           command: gem update --system; bin/setup
+          name: Install ruby dependencies
       - run:
-          name: Run standardrb
           command: bundle exec standardrb
+          name: Run standardrb
   build:
     parameters:
       image-tag:
         description: The target docker image
         type: string
-      check-code-quality:
-        description: Execute style checks in build workflow
-        type: boolean
-        default: true
     docker:
-      - image: cimg/<< parameters.image-tag >>
-        environment:
-          LANG: en_US.UTF-8
+      - environment:
           BUNDLE_DISABLE_VERSION_CHECK: 1
+          LANG: en_US.UTF-8
+        image: cimg/<< parameters.image-tag >>
     steps:
       - checkout
       - run:
-          name: Install ruby dependencies
           command: gem update --system; bin/setup
-      - when:
-          condition: << parameters.check-code-quality >>
-          steps:
-            - run:
-                name: Install Code Climate test-reporter
-                command: |
-                  curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-                  chmod +x ./cc-test-reporter
-            - run:
-                name: Prepare Code Climate test-reporter
-                command: ./cc-test-reporter before-build
+          name: Install ruby dependencies
       - run:
-          name: Execute specs
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+          name: Install Code Climate test-reporter
+      - run:
+          command: ./cc-test-reporter before-build
+          name: Prepare Code Climate test-reporter
+      - run:
           command: bundle exec rake
-      - when:
-          condition: << parameters.check-code-quality >>
-          steps:
-            - run:
-                name: Report coverage
-                command: ./cc-test-reporter after-build --exit-code $?
+          name: Execute specs
+      - run:
+          command: ./cc-test-reporter after-build --exit-code $?
+          name: Report coverage
 
 workflows:
   build:
@@ -69,8 +59,6 @@ workflows:
           matrix:
             parameters:
               image-tag:
-                - "ruby:3.0"
-                - "ruby:3.1"
-                - "ruby:3.2"
-              check-code-quality:
-                - false
+                - ruby:3.0
+                - ruby:3.1
+                - ruby:3.2
