@@ -11,6 +11,12 @@
 
 ### Security
 
+## [0.9.0] - 2023-11-28
+
+### Added
+
+- Add client option to send a legal entity id (https://github.com/shipcloud/billwerk/pull/152)
+
 ## [0.8.0] - 2022-02-22
 
 # What's Changed
