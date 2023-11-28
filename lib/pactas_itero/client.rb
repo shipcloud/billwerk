@@ -10,6 +10,8 @@ module PactasItero
     include PactasItero::Configurable
     include PactasItero::Api
 
+    LEGAL_ENTITY_HEADER_FIELD = "X-SELECTED-LEGAL-ENTITY-ID"
+
     attr_accessor :bearer_token
 
     def initialize(options = {})
@@ -70,6 +72,8 @@ module PactasItero
       else
         headers[:authorization] = auth_header
       end
+
+      headers[LEGAL_ENTITY_HEADER_FIELD] = params.delete(:legal_entity_id) || legal_entity_id
 
       response = connection.send(method.to_sym, path, params) do |request|
         request.headers.update(headers)

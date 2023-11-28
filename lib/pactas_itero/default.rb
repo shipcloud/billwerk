@@ -71,6 +71,10 @@ module PactasItero
       def user_agent
         ENV["PACTAS_ITERO_USER_AGENT"] || USER_AGENT
       end
+
+      def legal_entity_id
+        ENV["PACTAS_ITERO_LEGAL_ENTITY_ID"]
+      end
     end
   end
 end
