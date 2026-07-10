@@ -39,8 +39,11 @@ jobs:
             - run:
                 name: Install Code Climate test-reporter
                 command: |
-                  curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+                  curl -fsSL -o artifacts.tar.gz https://github.com/qltysh-archive/test-reporter/releases/download/v0.11.1/artifacts.tar.gz
+                  tar xf artifacts.tar.gz ./artifacts/bin/test-reporter-0.11.1-linux-amd64
+                  mv ./artifacts/bin/test-reporter-0.11.1-linux-amd64 ./cc-test-reporter
                   chmod +x ./cc-test-reporter
+                  rm -rf artifacts artifacts.tar.gz
             - run:
                 name: Prepare Code Climate test-reporter
                 command: ./cc-test-reporter before-build
