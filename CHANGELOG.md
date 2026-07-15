@@ -11,6 +11,16 @@
 
 ### Security
 
+## [1.0.0] - 2026-07-15
+
+### Added
+
+- Add trigger invoice endpoint (https://github.com/shipcloud/billwerk/pull/158)
+
+### Removed
+
+- Removed CodeClimate from CircleCI
+
 ## [0.9.0] - 2023-11-28
 
 ### Added
