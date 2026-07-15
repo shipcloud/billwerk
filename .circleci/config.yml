@@ -19,10 +19,6 @@ jobs:
       image-tag:
         description: The target docker image
         type: string
-      check-code-quality:
-        description: Execute style checks in build workflow
-        type: boolean
-        default: true
     docker:
       - image: cimg/<< parameters.image-tag >>
         environment:
@@ -33,26 +29,9 @@ jobs:
       - run:
           name: Install ruby dependencies
           command: gem update --system; bin/setup
-      - when:
-          condition: << parameters.check-code-quality >>
-          steps:
-            - run:
-                name: Install Code Climate test-reporter
-                command: |
-                  curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-                  chmod +x ./cc-test-reporter
-            - run:
-                name: Prepare Code Climate test-reporter
-                command: ./cc-test-reporter before-build
       - run:
           name: Execute specs
           command: bundle exec rake
-      - when:
-          condition: << parameters.check-code-quality >>
-          steps:
-            - run:
-                name: Report coverage
-                command: ./cc-test-reporter after-build --exit-code $?
 
 workflows:
   build:
@@ -72,5 +51,3 @@ workflows:
                 - "ruby:3.0"
                 - "ruby:3.1"
                 - "ruby:3.2"
-              check-code-quality:
-                - false
