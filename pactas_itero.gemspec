@@ -38,7 +38,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec", "~> 3.11.0"
   spec.add_development_dependency("standard", "~> 1.25.1")
-  spec.add_development_dependency("simplecov", "~> 0.16.1")
+  spec.add_development_dependency("simplecov", "~> 0.22.0")
   spec.add_development_dependency("webmock", "~> 3.3")
   spec.metadata["rubygems_mfa_required"] = "true"
 end
